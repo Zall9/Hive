@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">Hive</string>
+
+    <!--Page d'acceuil -->
+    <string name="home_page_title">A découvrir</string>
+    <string name="home_page_last_post">Dernièrs Posts</string>
+
+
+    <!--Page d'ajout de post-->
+    <string name="add_post_page_title">Ajout d\'un post</string>
+    <string name="add_post_page_upload_button">Charger Image</string>
+    <string name="add_post_page_name_input">@string/home_page_post_name</string>
+    <string name="add_post_page_description_input">@string/home_page_post_descripiton</string>
+
+    <string-array name="add_post_page_topic_input">
+        <item>Sport</item>
+        <item>Mathématique</item>
+        <item>Informatique</item>
+        <item>Réseau</item>
+        <item>Communication</item>
+    </string-array>
+
+    <string name="add_post_page_confirm_button">Confirmer</string>
+
+    <!--Fenetre pop up de détail -->
+    <string name="popup_post_name">Post Name</string>
+    <string name="popup_post_description">Description</string>
+
+
+    <!--Post customise-->
+    <string name="home_page_post_name">Nom du Post</string>
+    <string name="home_page_post_descripiton">Description du post</string>
+
 </resources>
