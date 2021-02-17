@@ -23,6 +23,8 @@
         style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#FF0000"
+        android:textSize="40sp"
         android:text="@string/home_page_title"
         app:layout_constraintStart_toStartOf="@+id/app_title"
         app:layout_constraintTop_toBottomOf="@+id/app_title" />
