@@ -31,4 +31,8 @@
     <string name="home_page_post_name">Nom du Post</string>
     <string name="home_page_post_descripiton">Description du post</string>
 
+    <string name="home_title">Home</string>
+    <string name="add_title">Poster</string>
+    <string name="account_title">Compte</string>
+
 </resources>
