@@ -8,7 +8,7 @@
 
     <!--Page d'ajout de post-->
     <string name="add_post_page_title">Ajout d\'un post</string>
-    <string name="add_post_page_upload_button">Charger Image</string>
+    <string name="add_post_page_upload_button">Charger une image de votre galerie</string>
     <string name="add_post_page_name_input">@string/home_page_post_name</string>
     <string name="add_post_page_description_input">@string/home_page_post_descripiton</string>
 
@@ -20,7 +20,8 @@
         <item>Communication</item>
     </string-array>
 
-    <string name="add_post_page_confirm_button">Confirmer</string>
+    <string name="add_post_page_confirm_button">Envoyer le post au serveur</string>
+    <string name="add_post_page_edit_text_hint">Entrez le nom de votre post ici</string>
 
     <!--Fenetre pop up de détail -->
     <string name="popup_post_name">Post Name</string>
