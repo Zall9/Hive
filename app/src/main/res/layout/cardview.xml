@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardview1"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
     <RelativeLayout
         android:id="@+id/Father"
         android:layout_width="match_parent"
-        android:layout_height="327dp"
+        android:layout_height="400dp"
         android:background="#f9ffaa">
 
 
@@ -21,16 +22,18 @@
             android:layout_width="match_parent"
             android:layout_height="76dp"
             android:layout_below="@+id/VolleyImageView"
-            android:layout_marginTop="-10dp"
+
             android:background="@color/navbar"
-            android:layout="@+id/Father" >
+            android:layout="@+id/Father">
+
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/likeCheckBox"
                 android:layout_width="73dp"
                 android:layout_height="65dp"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginTop="-70dp"
                 android:layout_marginBottom="-7dp"
 
@@ -41,8 +44,8 @@
                 android:id="@+id/checkBox3"
                 android:layout_width="wrap_content"
                 android:layout_height="58dp"
-                android:layout_alignParentBottom="true"
                 android:layout_alignRight="@+id/l"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="-55dp"
                 android:layout_marginBottom="-3dp"
@@ -53,10 +56,11 @@
                 android:id="@+id/ShareButton"
                 android:layout_width="71dp"
                 android:layout_height="65dp"
+                android:layout_alignParentRight="true"
                 android:layout_marginStart="232dp"
                 android:layout_marginLeft="870dp"
-                android:layout_alignParentRight="true"
                 android:layout_marginEnd="7dp"
+                android:layout_marginRight="14dp"
                 android:layout_marginBottom="80dp"
                 android:background="@drawable/ic_round_share_24"
                 card_view:srcCompat="@android:drawable/ic_menu_share" />
@@ -81,7 +85,7 @@
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/VolleyImageView"
             android:layout_width="match_parent"
-            android:layout_height="243dp"
+            android:layout_height="283dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="10dp"
 
