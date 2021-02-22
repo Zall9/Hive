@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.UploadPackage;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.hive.R;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
