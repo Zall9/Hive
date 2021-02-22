@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="40sp"
+        android:textColor="@color/gold"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/big_margin"
+        />
+
+    <EditText
+        android:id="@+id/text_pseudo"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/low_margin"
+        android:layout_marginTop="@dimen/low_margin"
+        android:layout_marginEnd="@dimen/low_margin"
+        android:layout_marginBottom="@dimen/low_margin"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Pseudo"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/text_password"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_pseudo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/item_margin"
+        android:layout_marginTop="@dimen/item_margin"
+        android:layout_marginEnd="@dimen/item_margin"
+        android:layout_marginBottom="@dimen/item_margin"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <ImageView
+        android:id="@+id/pseudo_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login"
+        android:layout_alignTop="@id/text_pseudo"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/ic_user" />
+
+    <ImageView
+        android:id="@+id/password_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_pseudo"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/ic_lock" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_centerHorizontal="true"
+        style="@style/ButtonColor"
+        android:layout_below="@id/text_password"
+        />
+
+    <TextView
+        android:id="@+id/link_to_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_login"
+        android:layout_marginTop="@dimen/item_margin"
+        android:text="Créer un nouveau compte ? SignUp"/>
+
+
+</RelativeLayout>

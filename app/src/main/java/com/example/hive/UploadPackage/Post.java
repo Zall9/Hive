@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.UploadPackage;
 
 public class Post {
     private String nom;
