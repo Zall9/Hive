@@ -85,6 +85,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button_login"
         android:layout_marginTop="@dimen/item_margin"
+        android:onClick="register"
         android:text="Créer un nouveau compte ? SignUp"/>
 
 
