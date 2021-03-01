@@ -18,7 +18,7 @@
         />
 
     <EditText
-        android:id="@+id/text_full_name"
+        android:id="@+id/text_prenom"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/signup"
@@ -29,14 +29,29 @@
         android:layout_marginBottom="@dimen/low_margin"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Full Name"
+        android:hint="Prénom"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/text_nom"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_prenom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/low_margin"
+        android:layout_marginTop="@dimen/low_margin"
+        android:layout_marginEnd="@dimen/low_margin"
+        android:layout_marginBottom="@dimen/low_margin"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Nom"
         android:inputType="textMultiLine" />
 
     <EditText
         android:id="@+id/text_email"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_full_name"
+        android:layout_below="@id/text_nom"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="@dimen/low_margin"
         android:layout_marginTop="@dimen/low_margin"
@@ -59,8 +74,8 @@
         android:layout_marginBottom="@dimen/low_margin"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Pseudo"
-        android:inputType="textMultiLine" />
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/text_password"
@@ -73,7 +88,7 @@
         android:layout_marginEnd="@dimen/item_margin"
         android:layout_marginBottom="@dimen/item_margin"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Réentrer password"
         android:inputType="textPassword" />
 
     <ImageView
@@ -85,7 +100,7 @@
         android:layout_marginTop="7dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="330dp"
-        android:src="@drawable/ic_user" />
+        android:src="@drawable/ic_lock" />
 
     <ImageView
         android:id="@+id/password_icon"
@@ -98,7 +113,7 @@
         android:src="@drawable/ic_lock" />
 
     <ImageView
-        android:id="@+id/full_name_icon"
+        android:id="@+id/nom_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/signup"
@@ -108,10 +123,20 @@
         android:src="@drawable/ic_full_name" />
 
     <ImageView
+        android:id="@+id/prenom_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_prenom"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="330dp"
+        android:src="@drawable/ic_nom" />
+
+    <ImageView
         android:id="@+id/email_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_full_name"
+        android:layout_below="@id/text_nom"
         android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="330dp"
@@ -141,7 +166,6 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button_sign_up"
         android:layout_marginTop="@dimen/item_margin"
-        android:onClick="login"
         android:text="Vous avez déjà un compte ? Login"/>
 
 </RelativeLayout>

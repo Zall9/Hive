@@ -29,7 +29,7 @@
         android:layout_marginBottom="@dimen/low_margin"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Pseudo"
+        android:hint="Email"
         android:inputType="textMultiLine" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:layout_marginTop="7dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="330dp"
-        android:src="@drawable/ic_user" />
+        android:src="@drawable/ic_email" />
 
     <ImageView
         android:id="@+id/password_icon"
@@ -85,8 +85,8 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button_login"
         android:layout_marginTop="@dimen/item_margin"
-        android:onClick="register"
-        android:text="Créer un nouveau compte ? SignUp"/>
+
+        android:text="Créer un nouveau compte ?SignUp"/>
 
 
 </RelativeLayout>

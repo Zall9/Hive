@@ -23,68 +23,64 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Register extends AppCompatActivity {
-    private EditText estName, estEmail, estPassword, estReentrerPassword;
-    private TextView tvStatus;
+    private EditText estPrenom, estNom, estEmail, estPassword, estReentrerPassword;
     private Button btnRegister;
-    private String URL = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/register.php";
-    private String name, email, password, reentrerpassword;
+    private TextView estLogin;
+
+    public static Credentials credentials;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
-        estName = findViewById(R.id.text_full_name);
+        estPrenom = findViewById(R.id.text_prenom);
+        estNom = findViewById(R.id.text_nom);
         estEmail = findViewById(R.id.text_email);
         estPassword = findViewById(R.id.text_pseudo);
         estReentrerPassword = findViewById(R.id.text_password);
-        tvStatus = findViewById(R.id.tvStatus);
         btnRegister = findViewById(R.id.button_sign_up);
-        name = email = password = reentrerpassword ="";
-        
+        estLogin = findViewById(R.id.link_to_login);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String regPrenom = estPrenom.getText().toString();
+                String regNom = estNom.getText().toString();
+                String regEmail = estEmail.getText().toString();
+                String regPassword = estPassword.getText().toString();
+                String regReentrerPassword = estReentrerPassword.getText().toString();
+
+                if(validate(regPrenom, regNom, regPassword, regReentrerPassword)){
+                    credentials = new Credentials(regNom, regPrenom,regEmail, regPassword);
+                    Intent intent = new Intent(Register.this, MainActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(Register.this, "Registration Successful !", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+
+        estLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Register.this, MainActivity.class));
+            }
+        });
 
     }
 
-    public void save(View view){
-        name = estName.getText().toString().trim();
-        email = estEmail.getText().toString().trim();
-        password = estPassword.getText().toString().trim();
-        reentrerpassword = estReentrerPassword.getText().toString().trim();
-        if(!password.equals(reentrerpassword)){
-            Toast.makeText(this, "Password Mismatch", Toast.LENGTH_SHORT).show();
+    private boolean validate(String prenom, String nom, String password, String reentrerPassword){
+        if(prenom.isEmpty() || nom.isEmpty() || password.length() < 8){
+            Toast.makeText(this, "Rentrer tous les champs, le password doit avoir au moins 8 caractères", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(!password.equals(reentrerPassword)){
+            Toast.makeText(this, "Les deux password doivent être identiques !", Toast.LENGTH_SHORT).show();
+            return false;
         }
-        else if(!name.equals("") && !email.equals("") && !password.equals("")){
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    if (response.equals("success")) {
-                        tvStatus.setText("Success Register");
-                        btnRegister.setClickable(false);
-                    } else if (response.equals("failure")) {
-                        tvStatus.setText("Something went wrong");
-                    }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
-                }
-            }){
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> data = new HashMap<>();
-                    data.put("name", name);
-                    data.put("email", email);
-                    data.put("password", password);
-                    return data;
-                }
-            };
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            requestQueue.add(stringRequest);
-        }
+        return true;
     }
 
-    public void login(View view){
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
-        finish();
-    }
+
+
+
 }
