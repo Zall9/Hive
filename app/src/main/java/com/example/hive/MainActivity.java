@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hive.javaClasses.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -77,13 +78,17 @@ public class MainActivity extends AppCompatActivity{
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            boolean estValide = response.trim().equals("Success");
+                            String[] tabreponse = response.split(",");
+                            boolean estValide = tabreponse[0].trim().equals("Success");
+                            User user = new User(Integer.parseInt(tabreponse[0]), tabreponse[1], tabreponse[2], tabreponse[3]);
+
                             if(!estValide){
                                 Toast.makeText(MainActivity.this, "Email/Password invalide !", Toast.LENGTH_SHORT).show();
                             }else{
                                 Toast.makeText(MainActivity.this, "Login successful !", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(MainActivity.this, MainMenu.class);
+                                intent.putExtra("User", user);
                                 startActivity(intent);
                                 //finish();
                             }

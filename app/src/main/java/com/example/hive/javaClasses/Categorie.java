@@ -13,4 +13,6 @@ public class Categorie {
     public void setNomCategorie(String nomCategorie) {
         this.nomCategorie = nomCategorie;
     }
+    @Override
+    public String toString(){return this.nomCategorie+"";}
 }

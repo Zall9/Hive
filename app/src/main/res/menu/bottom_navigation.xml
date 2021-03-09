@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:title="@string/home_title"/>
     <item
+        android:id="@+id/nav_categorie"
+        android:icon="@drawable/ic_loupe"
+        android:title="@string/categorie_title"/>
+    <item
         android:id="@+id/nav_add"
         android:icon="@drawable/ic_baseline_add_photo_alternate_24"
         android:title="@string/add_title"/>

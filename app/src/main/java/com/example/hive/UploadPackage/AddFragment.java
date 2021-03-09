@@ -22,6 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hive.R;
+import com.example.hive.javaClasses.User;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -149,6 +150,7 @@ public class AddFragment extends Fragment {
 
             @Override
             protected String doInBackground(Void... params) {
+                User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
 
                 ImageProcessClass imageProcessClass = new ImageProcessClass();
 
@@ -157,6 +159,10 @@ public class AddFragment extends Fragment {
                 HashMapParams.put(ImageName, GetImageNameEditText);
 
                 HashMapParams.put(ImagePath, ConvertImage);
+
+                HashMapParams.put("idUser", String.valueOf(user.getIdUser()));
+
+                HashMapParams.put("idTopic", "TOPICALED");
 
                 String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
 
