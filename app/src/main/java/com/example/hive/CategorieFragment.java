@@ -46,16 +46,24 @@ public class CategorieFragment extends Fragment {
             @Override
             public void onSuccess(ArrayList<Categorie> result) {
                 categories = result;
+                Log.d("CATEGORIE","Dans on success");
+
+
+
             }
         });
+
+        Log.d("CATEGORIE","Apres on success");
+
         for (Categorie c : categories){
             Log.d("CATEGORIE", c.toString());
         }
+
         return rootView;
     }
 
 
-    public static void recupCategorie(Activity monActivite, final VolleyCallBack volleyCallBack){
+    public void recupCategorie(Activity monActivite, final VolleyCallBack volleyCallBack){
         String url = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/show_categorie.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
