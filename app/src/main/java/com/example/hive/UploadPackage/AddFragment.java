@@ -162,7 +162,7 @@ public class AddFragment extends Fragment {
 
                 HashMapParams.put("idUser", String.valueOf(user.getIdUser()));
 
-                HashMapParams.put("idTopic", "TOPICALED");
+                HashMapParams.put("idTopic", "1");
 
                 String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
 

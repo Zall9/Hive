@@ -47,6 +47,9 @@ public class CategorieFragment extends Fragment {
             public void onSuccess(ArrayList<Categorie> result) {
                 categories = result;
                 Log.d("CATEGORIE","Dans on success");
+                for (Categorie c : categories){
+                    Log.d("CATEGORIE", c.toString());
+                }
 
 
 
@@ -54,10 +57,6 @@ public class CategorieFragment extends Fragment {
         });
 
         Log.d("CATEGORIE","Apres on success");
-
-        for (Categorie c : categories){
-            Log.d("CATEGORIE", c.toString());
-        }
 
         return rootView;
     }
