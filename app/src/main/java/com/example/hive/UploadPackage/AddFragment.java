@@ -13,16 +13,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.hive.CategorieFragment;
 import com.example.hive.R;
+import com.example.hive.javaClasses.Categorie;
 import com.example.hive.javaClasses.User;
+import com.example.hive.utils.VolleyCallBack;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,6 +40,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,6 +86,20 @@ public class AddFragment extends Fragment {
         SelectImageGallery.setOnClickListener(selectListener);
 
         UploadImageServer.setOnClickListener(uploadListener);
+
+        final Spinner spinnerCategorie = (Spinner) rootView.findViewById(R.id.spinner_categorie);
+        CategorieFragment.recupCategorie(getActivity(), new VolleyCallBack() {
+            @Override
+            public void onSuccess(ArrayList<Categorie> result) {
+                String[] lCategorie = new String[result.size()];
+                for(int i=0; i<result.size();i++){
+                    lCategorie[i] = result.get(i).toString();
+                }
+                ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, lCategorie);
+                dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerCategorie.setAdapter(dataAdapterR);
+            }
+        });
 
 
         return rootView;

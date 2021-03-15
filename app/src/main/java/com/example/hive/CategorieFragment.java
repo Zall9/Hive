@@ -11,7 +11,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -47,12 +49,41 @@ public class CategorieFragment extends Fragment {
             public void onSuccess(ArrayList<Categorie> result) {
                 categories = result;
                 Log.d("CATEGORIE","Dans on success");
+                List<HashMap<String, String>> liste = new ArrayList<HashMap<String,String>>();
+                HashMap<String, String> hashCategorie;
+
                 for (Categorie c : categories){
+                    hashCategorie = new HashMap<String, String>();
                     Log.d("CATEGORIE", c.toString());
+                    hashCategorie.put("text1",c.toString());
+                    liste.add(hashCategorie);
+
                 }
 
-
-
+                ListAdapter adapter = new SimpleAdapter(getActivity(),
+                        //Valeurs à insérer
+                        liste,
+                        /*
+                         * Layout de chaque élément (là, il s'agit d'un layout par défaut
+                         * pour avoir deux textes l'un au-dessus de l'autre, c'est pourquoi on
+                         * n'affiche que le nom et le numéro d'une personne)
+                         */
+                        android.R.layout.simple_list_item_1,
+                        /*
+                         * Les clés des informations à afficher pour chaque élément :
+                         *  - la valeur associée à la clé « text1 » sera la première information
+                         *  - la valeur associée à la clé « text2 » sera la seconde information
+                         */
+                        new String[] {"text1"},
+                        /*
+                         * Enfin, les layouts à appliquer à chaque widget de notre élément
+                         * (ce sont des layouts fournis par défaut) :
+                         *  - la première information appliquera le layout « android.R.id.text1 »
+                         *  - la seconde information appliquera le layout « android.R.id.text2 »
+                         */
+                        new int[] {android.R.id.text1});
+                //Pour finir, on donne à la ListView le SimpleAdapter
+                view.setAdapter(adapter);
             }
         });
 
@@ -62,7 +93,7 @@ public class CategorieFragment extends Fragment {
     }
 
 
-    public void recupCategorie(Activity monActivite, final VolleyCallBack volleyCallBack){
+    public static void recupCategorie(Activity monActivite, final VolleyCallBack volleyCallBack){
         String url = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/show_categorie.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
