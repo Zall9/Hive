@@ -95,6 +95,20 @@ public class AddFragment extends Fragment {
         UploadImageServer.setOnClickListener(uploadListener);
 
         spinnerCategorie = (Spinner) rootView.findViewById(R.id.spinner_categorie);
+        spinnerCategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                GetCategorieNameSpinner = String.valueOf(spinnerCategorie.getSelectedItem());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        Log.d("ALED", GetCategorieNameSpinner);
+
         CategorieFragment.recupCategorie(getActivity(), new VolleyCallBack() {
             @Override
             public void onSuccess(ArrayList<Categorie> result) {
@@ -319,18 +333,6 @@ public class AddFragment extends Fragment {
                     GetImageNameEditText = imageName.getText().toString();
                     GetTopicNameEditText = Topics.getText().toString();
                     //Spinner
-                    spinnerCategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            GetCategorieNameSpinner = String.valueOf(spinnerCategorie.getSelectedItem());
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
-
                     ImageUploadToServerFunction();
                 }
             };
