@@ -35,6 +35,11 @@ public class HomeFragment extends Fragment {
     String HTTP_JSON_URL = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/img_display.php";
     String Image_Name_JSON = "title";
     String Image_URL_JSON = "image";
+    String Nom_Auteur_JSON = "nomAuteur";
+    String Prenom_Auteur_JSON = "prenomAuteur";
+    String Topic_JSON = "topic";
+    String Categorie_JSON = "categorie";
+    String nbLike_JSON = "nbLike";
     // Liste des atributs des Posts
 
     JsonArrayRequest RequestOfJSonArray ;
@@ -145,9 +150,15 @@ public class HomeFragment extends Fragment {
                 GetDataAdapter2.setImageTitle(json.getString(Image_Name_JSON));
 
                 // Adding image title name in array to display on RecyclerView click event.
+                //TODO a modifer pour quand on clique sur l'image ca ouvre une nouvelle activé
                 ImageTitleNameArrayListForClick.add(json.getString(Image_Name_JSON));
                 Log.i("URL_IMAGE", json.getString(Image_URL_JSON));
                 GetDataAdapter2.setImageUrl(json.getString(Image_URL_JSON));
+                GetDataAdapter2.setImageNomAuteur(json.getString(Nom_Auteur_JSON));
+                GetDataAdapter2.setImagePrenomAuteur(json.getString(Prenom_Auteur_JSON));
+                GetDataAdapter2.setImageTopic(json.getString(Topic_JSON));
+                GetDataAdapter2.setImageCategorie(json.getString(Categorie_JSON));
+                GetDataAdapter2.setImagenbLike(json.getString(nbLike_JSON));
 
             } catch (JSONException e) {
 

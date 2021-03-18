@@ -55,6 +55,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Viewholder.VollyImageView.setImageUrl(dataAdapterOBJ.getImageUrl(), imageLoader);
 
         Viewholder.ImageTitleTextView.setText(dataAdapterOBJ.getImageTitle());
+        String auteur_full = dataAdapterOBJ.getImageNomAuteur()+" "+dataAdapterOBJ.getImagePrenomAuteur();
+        Viewholder.ImageAuteurTextView.setText(auteur_full);
+        Viewholder.ImageTopicTextView.setText(dataAdapterOBJ.getImageTopic());
+        Viewholder.ImageCategorieTextView.setText(dataAdapterOBJ.getImageCategorie());
+        Viewholder.ImageNbLikeTextView.setText(dataAdapterOBJ.getImagenbLike());
     }
 
     @Override
@@ -65,7 +70,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView ImageTitleTextView;
+        public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView;
 
         public NetworkImageView VollyImageView ;
 
@@ -73,9 +78,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             super(itemView);
 
-            ImageTitleTextView = (TextView) itemView.findViewById(R.id.Category) ;
+            ImageTitleTextView = (TextView) itemView.findViewById(R.id.nom_post) ;
 
             VollyImageView = (NetworkImageView) itemView.findViewById(R.id.VolleyImageView) ;
+
+            ImageAuteurTextView = (TextView) itemView.findViewById(R.id.nom_auteur);
+
+            ImageTopicTextView = (TextView) itemView.findViewById(R.id.nom_topic);
+
+            ImageCategorieTextView = (TextView) itemView.findViewById(R.id.nom_categorie);
+
+            ImageNbLikeTextView = (TextView) itemView.findViewById(R.id.text_nblike);
 
         }
     }
