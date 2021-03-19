@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -24,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hive.javaClasses.Categorie;
+import com.example.hive.javaClasses.User;
 import com.example.hive.utils.VolleyCallBack;
 
 import org.json.JSONArray;
@@ -44,6 +46,10 @@ public class CategorieFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_categorie, container, false);
         view = rootView.findViewById(R.id.list_view);
+
+
+
+
         recupCategorie(getActivity(), new VolleyCallBack() {
             @Override
             public void onSuccess(ArrayList<Categorie> result) {
@@ -84,6 +90,19 @@ public class CategorieFragment extends Fragment {
                         new int[] {android.R.id.text1});
                 //Pour finir, on donne à la ListView le SimpleAdapter
                 view.setAdapter(adapter);
+
+                view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Categorie categorieClique = categories.get(position);
+                        Intent intent = new Intent(getActivity(), DescriptionCategorie.class);
+                        intent.putExtra("nomCategorie", categorieClique.toString());
+                        User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
+                        intent.putExtra("User", user);
+                        startActivity(intent);
+                    }
+                });
+
             }
         });
 
