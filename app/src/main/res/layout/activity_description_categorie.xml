@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".DescriptionCategorie">
 
+    <TextView
+        android:id="@+id/nom_categorie_topic_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Catégorie"
+        android:textSize="30dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_topic"
         android:layout_width="wrap_content"
@@ -14,6 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_below="@+id/nom_categorie_topic_list"
         tools:listitem="@layout/cardview_topics" />
 
 </RelativeLayout>

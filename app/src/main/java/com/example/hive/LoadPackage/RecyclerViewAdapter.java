@@ -68,6 +68,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return dataAdapters.size();
     }
 
+    public String getNomAuteur(int position){ return dataAdapters.get(position).getImageNomAuteur(); }
+
+    public String getPrenomAuteur(int position){ return dataAdapters.get(position).getImagePrenomAuteur();}
+
+    public String getNomPost(int position){ return dataAdapters.get(position).getImageTitle(); }
+
+    public String getCategorie(int position){ return dataAdapters.get(position).getImageCategorie(); }
+
+    public String getTopic(int position){ return dataAdapters.get(position).getImageTopic(); }
+
+    public String getImageUrl(int position){ return dataAdapters.get(position).getImageUrl(); }
+
+    public String getNbLike(int position){ return dataAdapters.get(position).getImagenbLike(); }
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView;

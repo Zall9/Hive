@@ -8,13 +8,21 @@ import java.util.Date;
 public class Commentaire {
     public int idCom;
     public String contenu;
-    public User auteur;
+    public String nomAuteur, prenomAuteur;
     public Date dateCommentaire;
-    Commentaire(User auteur, String contenu){
+    public Commentaire(String auteur, String contenu){
         this.idCom=idCom;
         this.contenu=contenu;
-        this.auteur=auteur;
+        this.nomAuteur=auteur;
         this.dateCommentaire=Calendar.getInstance().getTime();
+    }
+
+    public Commentaire(){
+        this.idCom = -1;
+        this.contenu = "error";
+        this.nomAuteur = "nom null";
+        this.prenomAuteur = "prenom null";
+        this.dateCommentaire = null;
     }
 
     public int getIdCom() {
@@ -33,15 +41,19 @@ public class Commentaire {
         this.contenu = contenu;
     }
 
-    public User getAuteur() {
-        return auteur;
-    }
-
-    public void setAuteur(User auteur) {
-        this.auteur = auteur;
-    }
-
     public Date getDateCommentaire() {
         return dateCommentaire;
     }
+
+    public String getNomAuteur() { return nomAuteur; }
+
+    public void setNomAuteur(String nomAuteur) { this.nomAuteur = nomAuteur; }
+
+    public String getPrenomAuteur() { return prenomAuteur; }
+    
+    public void setPrenomAuteur(String prenomAuteur) { this.prenomAuteur = prenomAuteur; }
+
+
+
+
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -41,6 +42,7 @@ public class DescriptionCategorie extends AppCompatActivity {
     private RecyclerViewTopic rvt;
 
     private String nomCategorie;
+    private TextView nomCategorieTW;
 
 
 
@@ -49,11 +51,13 @@ public class DescriptionCategorie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description_categorie);
         recList = (RecyclerView) findViewById(R.id.recyclerview_topic);
-        //recList.setHasFixedSize(true);
+        recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
         nomCategorie = getIntent().getStringExtra("nomCategorie");
+        nomCategorieTW = (TextView) findViewById(R.id.nom_categorie_topic_list);
+        nomCategorieTW.setText(nomCategorie);
         JSON_HTTP_CALL();
     }
 

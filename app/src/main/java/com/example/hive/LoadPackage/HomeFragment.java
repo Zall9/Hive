@@ -1,5 +1,6 @@
 package com.example.hive.LoadPackage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -19,7 +20,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hive.DescriptionCategorie;
+import com.example.hive.PostActivity;
 import com.example.hive.R;
+import com.example.hive.javaClasses.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,7 +55,7 @@ public class HomeFragment extends Fragment {
 
     RecyclerView.LayoutManager layoutManagerOfrecyclerView;
 
-    RecyclerView.Adapter recyclerViewadapter;
+    RecyclerViewAdapter recyclerViewadapter;
 
     ArrayList<String> ImageTitleNameArrayListForClick;
     ArrayList<String> ImageTitleQuanArrayListForClick;
@@ -92,8 +96,21 @@ public class HomeFragment extends Fragment {
                     //Getting RecyclerView Clicked Item value.
                     RecyclerViewItemPosition = Recyclerview.getChildAdapterPosition(view);
 
-                    // Showing RecyclerView Clicked Item value using Toast.
-                    Toast.makeText(getActivity(), ImageTitleNameArrayListForClick.get(RecyclerViewItemPosition), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getActivity(), PostActivity.class);
+                    //intent.putExtra("nomCategorie", categorieClique.toString());
+                    intent.putExtra("nomAuteur", recyclerViewadapter.getNomAuteur(RecyclerViewItemPosition));
+                    intent.putExtra("prenomAuteur", recyclerViewadapter.getPrenomAuteur(RecyclerViewItemPosition));
+                    intent.putExtra("nomPost", recyclerViewadapter.getNomPost(RecyclerViewItemPosition));
+                    intent.putExtra("nomCategorie", recyclerViewadapter.getCategorie(RecyclerViewItemPosition));
+                    intent.putExtra("nomTopic", recyclerViewadapter.getTopic(RecyclerViewItemPosition));
+                    intent.putExtra("urlImage", recyclerViewadapter.getImageUrl(RecyclerViewItemPosition));
+                    intent.putExtra("nbLike", recyclerViewadapter.getNbLike(RecyclerViewItemPosition));
+                    User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
+                    intent.putExtra("idUser", user.getIdUser());
+                    startActivity(intent);
+
+
+
                 }
 
                 return false;
