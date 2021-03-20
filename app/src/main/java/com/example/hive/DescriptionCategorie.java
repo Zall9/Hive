@@ -40,7 +40,6 @@ public class DescriptionCategorie extends AppCompatActivity {
     private String est_Abonne_JSON = "estAbonne";
     private RecyclerView recList;
     private RecyclerViewTopic rvt;
-
     private String nomCategorie;
     private TextView nomCategorieTW;
 
@@ -134,7 +133,7 @@ public class DescriptionCategorie extends AppCompatActivity {
             mesTopics.add(GetTopics);
         }
 
-        rvt = new RecyclerViewTopic(mesTopics, this);
+        rvt = new RecyclerViewTopic(mesTopics, this, this);
 
         recList.setAdapter(rvt);
 
