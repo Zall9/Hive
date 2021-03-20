@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity{
             estPassword = findViewById(R.id.text_password);
             eLogin = findViewById(R.id.button_login);
             estRegister = findViewById(R.id.link_to_sign_up);
-
             estRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
