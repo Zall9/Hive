@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Categorie"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:layout_below="@id/post_activity_nom_post"
         android:layout_marginLeft="5dp"/>
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Topic"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:layout_below="@+id/post_activity_nom_post"
         android:layout_toEndOf="@id/post_activity_categorie"
         android:layout_marginLeft="10dp"/>
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Auteur"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:layout_below="@id/post_activity_categorie"
         android:layout_marginTop="4dp"
         android:layout_marginLeft="5dp"/>
@@ -51,9 +51,8 @@
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/VolleyImageViewPost"
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/post_activity_auteur"
         android:src="@mipmap/ic_launcher"/>
 
@@ -63,7 +62,6 @@
         android:layout_height="40dp"
         android:src="@drawable/ic_baseline_favorite_orange_24"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
         android:layout_below="@id/VolleyImageViewPost"
         />
 
@@ -74,7 +72,6 @@
         android:text="10"
         android:textSize="15sp"
         android:gravity="center"
-        android:layout_marginTop="5dp"
         android:layout_below="@id/VolleyImageViewPost"
         android:layout_toEndOf="@id/image_like_post"/>
 
@@ -85,7 +82,6 @@
         android:text="Commentez !"
         android:layout_below="@id/VolleyImageViewPost"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"/>
 
 
