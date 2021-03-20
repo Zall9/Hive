@@ -97,6 +97,7 @@ public class CategorieFragment extends Fragment {
                         Categorie categorieClique = categories.get(position);
                         Intent intent = new Intent(getActivity(), DescriptionCategorie.class);
                         intent.putExtra("nomCategorie", categorieClique.toString());
+                        Log.d("CATE", categorieClique.toString());
                         User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
                         intent.putExtra("User", user);
                         startActivity(intent);

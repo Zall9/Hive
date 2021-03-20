@@ -49,10 +49,11 @@ public class DescriptionCategorie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description_categorie);
         recList = (RecyclerView) findViewById(R.id.recyclerview_topic);
-        recList.setHasFixedSize(true);
+        //recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
+        nomCategorie = getIntent().getStringExtra("nomCategorie");
         JSON_HTTP_CALL();
     }
 
@@ -68,6 +69,7 @@ public class DescriptionCategorie extends AppCompatActivity {
                         JSONArray jsonArray = null;
                         try {
                             jsonArray = new JSONArray(response);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -89,13 +91,13 @@ public class DescriptionCategorie extends AppCompatActivity {
             public Map<String, String> getParams() throws AuthFailureError {
 
                 User user = (User)getIntent().getExtras().getSerializable("User");
-                String nomCategorie = getIntent().getExtras().getString("nomCatagorie");
+                //nomCategorie = getIntent().getExtras().getString("nomCatagorie");
 
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("idUser", String.valueOf(user.getIdUser()));
                 params.put("nomCategorie", nomCategorie);
 
-                return super.getParams();
+                return params;
             }
         };
 
