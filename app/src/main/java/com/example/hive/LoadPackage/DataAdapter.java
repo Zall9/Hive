@@ -9,6 +9,7 @@ public class DataAdapter
     private String ImageTopic;
     private String ImageCategorie;
     private String ImagenbLike;
+    private String ImageRole;
 
     public String getImageUrl() {
         return ImageURL;
@@ -38,6 +39,9 @@ public class DataAdapter
 
     public String getImagenbLike() { return ImagenbLike; }
     public void setImagenbLike(String imagenbLike) { ImagenbLike = imagenbLike; }
+
+    public String getImageRole() { return ImageRole; }
+    public void setImageRole(String imageRole) { ImageRole = imageRole; }
 
 
 

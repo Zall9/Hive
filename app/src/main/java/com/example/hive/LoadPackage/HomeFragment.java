@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.hive.DescriptionCategorie;
 import com.example.hive.PostActivity;
 import com.example.hive.R;
+import com.example.hive.javaClasses.Role;
 import com.example.hive.javaClasses.User;
 
 import org.json.JSONArray;
@@ -49,6 +50,7 @@ public class HomeFragment extends Fragment {
     String Topic_JSON = "topic";
     String Categorie_JSON = "categorie";
     String nbLike_JSON = "nbLike";
+    String listeRole_JSON = "listeRole";
     // Liste des atributs des Posts
 
     StringRequest RequestOfJSonArray ;
@@ -112,6 +114,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("nbLike", recyclerViewadapter.getNbLike(RecyclerViewItemPosition));
                     User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
                     intent.putExtra("idUser", user.getIdUser());
+                    intent.putExtra("Role", recyclerViewadapter.getRole(RecyclerViewItemPosition));
                     startActivity(intent);
 
 
@@ -199,6 +202,17 @@ public class HomeFragment extends Fragment {
                 GetDataAdapter2.setImageCategorie(json.getString(Categorie_JSON));
                 GetDataAdapter2.setImagenbLike(json.getString(nbLike_JSON));
 
+                JSONArray jsonArrayRole = json.getJSONArray(listeRole_JSON);
+                ArrayList<String> listeRole = new ArrayList<String>();
+                for(int j=0; j<jsonArrayRole.length(); j++){
+                    String role = null;
+                    role = jsonArrayRole.getString(j);
+                    listeRole.add(role);
+                }
+
+                String rolePlusHaut = gererRole(listeRole);
+                GetDataAdapter2.setImageRole(rolePlusHaut);
+
             } catch (JSONException e) {
 
                 e.printStackTrace();
@@ -209,6 +223,25 @@ public class HomeFragment extends Fragment {
         recyclerViewadapter = new RecyclerViewAdapter(ListOfdataAdapter, getActivity());
 
         recyclerView.setAdapter(recyclerViewadapter);
+    }
+
+
+    public String gererRole(ArrayList<String> listeRole){
+        //(Dieu) >Créateur > Admin > Membre
+        //Pour Wayntal -> le prof loufoque
+        String rolePlusHaut ="";
+        for (String r: listeRole) {
+            //Créateur - Admin - Membre
+            if(r.equals("Créateur")){
+                rolePlusHaut = "Créateur";
+            }else if(r.equals("Admin") && !rolePlusHaut.equals("Créateur")){
+                rolePlusHaut = "Admin";
+            }else if(r.equals("Membre") && (!rolePlusHaut.equals("Admin") && !rolePlusHaut.equals("Créateur"))){
+                rolePlusHaut = "Membre";
+            }
+
+        }
+        return  rolePlusHaut;
     }
 }
 

@@ -69,6 +69,7 @@ public class DescriptionCategorie extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("OUIR", response);
                         JSONArray jsonArray = null;
                         try {
                             jsonArray = new JSONArray(response);
@@ -122,7 +123,7 @@ public class DescriptionCategorie extends AppCompatActivity {
                 json = array.getJSONObject(i);
 
                 GetTopics.setNomTopic(json.getString(Nom_Topic_JSON));
-
+                Log.d("OUI", String.valueOf(json.getBoolean(est_Abonne_JSON)));
                 GetTopics.setEstAbonne(json.getBoolean(est_Abonne_JSON));
                 // Adding image title name in array to display on RecyclerView click event.
 

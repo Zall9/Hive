@@ -21,7 +21,7 @@
             android:id="@+id/bar"
             android:layout_width="match_parent"
             android:layout_height="76dp"
-            android:layout_below="@+id/nom_topic"
+            android:layout_below="@+id/nom_categorie"
 
             android:background="@color/navbar"
             android:layout="@+id/Father">
@@ -75,20 +75,31 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/cardview_info_size"
             android:text="Auteur"/>
+
         <TextView
-            android:id="@+id/nom_categorie"
+            android:id="@+id/role_auteur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nom_auteur"
+            android:layout_toEndOf="@id/nom_auteur"
+            android:text="Role"
+            android:layout_marginLeft="15dp"
+            android:textSize="21sp"/>
+
+        <TextView
+            android:id="@+id/nom_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nom_auteur"
             android:textSize="@dimen/cardview_info_size"
-            android:text="Catégorie"/>
+            android:text="Topic"/>
+
 
         <TextView
             android:id="@+id/nom_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_below="@+id/nom_categorie"
+            android:layout_below="@+id/nom_topic"
             android:layout_alignParentStart="true"
             android:gravity="center_horizontal"
             android:foregroundGravity="center_vertical"
@@ -109,12 +120,14 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/nom_topic"
+            android:id="@+id/nom_categorie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/VolleyImageView"
+            android:layout_below="@+id/VolleyImageView"
             android:textSize="@dimen/cardview_info_size"
-            android:text="Topic"/>
+            android:text="Catégorie"/>
+
+
 
 
     </RelativeLayout>

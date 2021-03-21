@@ -48,6 +48,17 @@
         android:layout_marginTop="4dp"
         android:layout_marginLeft="5dp"/>
 
+    <TextView
+        android:id="@+id/post_activity_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Role"
+        android:textSize="15sp"
+        android:layout_below="@id/post_activity_categorie"
+        android:layout_toEndOf="@+id/post_activity_auteur"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="15dp"/>
+
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/VolleyImageViewPost"

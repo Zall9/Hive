@@ -40,9 +40,9 @@ import java.util.Map;
 
 public class PostActivity extends AppCompatActivity {
 
-    private String nomAuteur, prenomAuteur, nomPost, nomCategorie, nomTopic, UrlImage, nbLike;
+    private String nomAuteur, prenomAuteur, nomPost, nomCategorie, nomTopic, UrlImage, nbLike, role;
     private int idUser;
-    private TextView auteurTV, PostTV, CategorieTV, TopicTV, nbLikeTV;
+    private TextView auteurTV, PostTV, CategorieTV, TopicTV, nbLikeTV, RoleTV;
     private ImageLoader imageLoader;
     private NetworkImageView VollyImageView ;
     private Button buttonCommenter;
@@ -69,6 +69,7 @@ public class PostActivity extends AppCompatActivity {
         UrlImage = getIntent().getExtras().getString("urlImage");
         nbLike = getIntent().getExtras().getString("nbLike");
         idUser = getIntent().getExtras().getInt("idUser");
+        role = getIntent().getExtras().getString("Role");
 
         auteurTV = (TextView) findViewById(R.id.post_activity_auteur);
 
@@ -83,6 +84,8 @@ public class PostActivity extends AppCompatActivity {
         VollyImageView = (NetworkImageView) findViewById(R.id.VolleyImageViewPost);
 
         buttonCommenter = (Button) findViewById(R.id.button_commenter_post);
+
+        RoleTV = (TextView) findViewById(R.id.post_activity_role);
 
         buttonCommenter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,6 +150,7 @@ public class PostActivity extends AppCompatActivity {
         CategorieTV.setText(nomCategorie);
         TopicTV.setText(nomTopic);
         nbLikeTV.setText(nbLike);
+        RoleTV.setText(role);
         JSON_HTTP_CALL();
     }
 

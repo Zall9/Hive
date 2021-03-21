@@ -57,9 +57,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Viewholder.ImageTitleTextView.setText(dataAdapterOBJ.getImageTitle());
         String auteur_full = dataAdapterOBJ.getImageNomAuteur()+" "+dataAdapterOBJ.getImagePrenomAuteur();
         Viewholder.ImageAuteurTextView.setText(auteur_full);
-        Viewholder.ImageTopicTextView.setText(dataAdapterOBJ.getImageTopic());
-        Viewholder.ImageCategorieTextView.setText(dataAdapterOBJ.getImageCategorie());
+        String t = "Topic : "+dataAdapterOBJ.getImageTopic();
+        String c = "Categorie : "+dataAdapterOBJ.getImageCategorie();
+        Viewholder.ImageTopicTextView.setText(t);
+        Viewholder.ImageCategorieTextView.setText(c);
         Viewholder.ImageNbLikeTextView.setText(dataAdapterOBJ.getImagenbLike());
+        Viewholder.ImageRole.setText(dataAdapterOBJ.getImageRole());
     }
 
     @Override
@@ -82,9 +85,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public String getNbLike(int position){ return dataAdapters.get(position).getImagenbLike(); }
 
+    public String getRole(int position){ return dataAdapters.get(position).getImageRole();}
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView;
+        public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView, ImageRole;
 
         public NetworkImageView VollyImageView ;
 
@@ -103,6 +108,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             ImageCategorieTextView = (TextView) itemView.findViewById(R.id.nom_categorie);
 
             ImageNbLikeTextView = (TextView) itemView.findViewById(R.id.text_nblike);
+
+            ImageRole = (TextView) itemView.findViewById(R.id.role_auteur);
 
         }
     }

@@ -3,6 +3,7 @@ package com.example.hive;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +91,7 @@ public class RecyclerViewTopic extends RecyclerView.Adapter<RecyclerViewTopic.Vi
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Log.d("REP", response);
                         if (response.equals("true")){
                             Toast.makeText(context, "Vous êtes abonné(e) !", Toast.LENGTH_SHORT).show();
                         }else if(response.equals("false")){
