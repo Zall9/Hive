@@ -15,10 +15,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hive.DescriptionCategorie;
 import com.example.hive.PostActivity;
@@ -30,7 +33,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class HomeFragment extends Fragment {
@@ -46,7 +51,7 @@ public class HomeFragment extends Fragment {
     String nbLike_JSON = "nbLike";
     // Liste des atributs des Posts
 
-    JsonArrayRequest RequestOfJSonArray ;
+    StringRequest RequestOfJSonArray ;
     RequestQueue requestQueue ;
 
     View view ;
@@ -132,13 +137,18 @@ public class HomeFragment extends Fragment {
 
     public void JSON_HTTP_CALL(){
 
-        RequestOfJSonArray = new JsonArrayRequest(HTTP_JSON_URL,
-
-                new Response.Listener<JSONArray>() {
+        RequestOfJSonArray = new StringRequest(Request.Method.POST, HTTP_JSON_URL,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONArray response) {
-
-                        ParseJSonResponse(response);
+                    public void onResponse(String response) {
+                        JSONArray jsonArray = null;
+                        Log.d("OUI", response);
+                        try {
+                            jsonArray = new JSONArray(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        ParseJSonResponse(jsonArray);
                     }
                 },
                 new Response.ErrorListener() {
@@ -146,9 +156,21 @@ public class HomeFragment extends Fragment {
                     public void onErrorResponse(VolleyError error) {
 
                     }
-                });
+                })
 
-        requestQueue = Volley.newRequestQueue(getActivity());
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("idUser", String.valueOf(user.getIdUser()));
+
+                return params;
+            }
+        };
+
+
+                requestQueue = Volley.newRequestQueue(getActivity());
 
         requestQueue.add(RequestOfJSonArray);
     }

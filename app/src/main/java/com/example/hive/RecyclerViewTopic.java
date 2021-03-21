@@ -90,11 +90,11 @@ public class RecyclerViewTopic extends RecyclerView.Adapter<RecyclerViewTopic.Vi
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        if (response.equals("Sucess")){
-
+                        if (response.equals("true")){
                             Toast.makeText(context, "Vous êtes abonné(e) !", Toast.LENGTH_SHORT).show();
+                        }else if(response.equals("false")){
+                            Toast.makeText(context, "Vous êtes désabonné(e) !", Toast.LENGTH_SHORT).show();
                         }else{
-
                             Toast.makeText(context, "Erreur lors de l'abonnement", Toast.LENGTH_SHORT).show();
                         }
                         Intent intent = activity.getIntent();
