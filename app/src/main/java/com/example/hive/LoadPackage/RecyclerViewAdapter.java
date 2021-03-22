@@ -55,6 +55,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Viewholder.VollyImageView.setImageUrl(dataAdapterOBJ.getImageUrl(), imageLoader);
 
         Viewholder.ImageTitleTextView.setText(dataAdapterOBJ.getImageTitle());
+        String auteur_full = dataAdapterOBJ.getImageNomAuteur()+" "+dataAdapterOBJ.getImagePrenomAuteur();
+        Viewholder.ImageAuteurTextView.setText(auteur_full);
+        String t = "Topic : "+dataAdapterOBJ.getImageTopic();
+        String c = "Categorie : "+dataAdapterOBJ.getImageCategorie();
+        Viewholder.ImageTopicTextView.setText(t);
+        Viewholder.ImageCategorieTextView.setText(c);
+        Viewholder.ImageNbLikeTextView.setText(dataAdapterOBJ.getImagenbLike());
+        Viewholder.ImageRole.setText(dataAdapterOBJ.getImageRole());
     }
 
     @Override
@@ -63,9 +71,25 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return dataAdapters.size();
     }
 
+    public String getNomAuteur(int position){ return dataAdapters.get(position).getImageNomAuteur(); }
+
+    public String getPrenomAuteur(int position){ return dataAdapters.get(position).getImagePrenomAuteur();}
+
+    public String getNomPost(int position){ return dataAdapters.get(position).getImageTitle(); }
+
+    public String getCategorie(int position){ return dataAdapters.get(position).getImageCategorie(); }
+
+    public String getTopic(int position){ return dataAdapters.get(position).getImageTopic(); }
+
+    public String getImageUrl(int position){ return dataAdapters.get(position).getImageUrl(); }
+
+    public String getNbLike(int position){ return dataAdapters.get(position).getImagenbLike(); }
+
+    public String getRole(int position){ return dataAdapters.get(position).getImageRole();}
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView ImageTitleTextView;
+        public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView, ImageRole;
 
         public NetworkImageView VollyImageView ;
 
@@ -73,9 +97,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             super(itemView);
 
-            ImageTitleTextView = (TextView) itemView.findViewById(R.id.Category) ;
+            ImageTitleTextView = (TextView) itemView.findViewById(R.id.nom_post) ;
 
             VollyImageView = (NetworkImageView) itemView.findViewById(R.id.VolleyImageView) ;
+
+            ImageAuteurTextView = (TextView) itemView.findViewById(R.id.nom_auteur);
+
+            ImageTopicTextView = (TextView) itemView.findViewById(R.id.nom_topic);
+
+            ImageCategorieTextView = (TextView) itemView.findViewById(R.id.nom_categorie);
+
+            ImageNbLikeTextView = (TextView) itemView.findViewById(R.id.text_nblike);
+
+            ImageRole = (TextView) itemView.findViewById(R.id.role_auteur);
 
         }
     }

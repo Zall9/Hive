@@ -4,13 +4,14 @@ import android.graphics.Bitmap;
 import android.media.Image;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     //ATTRIBUTES
-    public int idUtilisateur;
+    public int idUser;
     public String nom, prenom, email;
     private String password;
     public Image profilePic;
@@ -21,30 +22,17 @@ public class User {
     public Date dateInscription;
 
 
-    //CONSTRUCTORS
-    public User(String nom,String prenom,String email, Image profilePic, ArrayList<Topic> userTopicList, ArrayList<Role> userRoleList,
-                ArrayList<Badges> badgesList, ArrayList<Commentaire> commentList){
-        this.idUtilisateur=idUtilisateur;
+
+    //constructeur à utiliser pour creer un nouvel utilisateur
+    public User(int idUser,String nom,String prenom,String email){
+        this.idUser=idUser;
         this.nom=nom;
         this.prenom=prenom;
         this.email=email;
-        this.profilePic=profilePic;
         this.userTopicList=userTopicList;
         this.userRoleList=userRoleList;
         this.badgesList=badgesList;
         this.commentList=commentList;
-    }
-    //constructeur à utiliser pour creer un nouvel utilisateur
-    public User(String nom,String prenom,String email, Image profilePic){
-        this.idUtilisateur=idUtilisateur;
-        this.nom=nom;
-        this.prenom=prenom;
-        this.email=email;
-        this.profilePic=profilePic;
-        this.userTopicList= new ArrayList<Topic>();
-        this.userRoleList=new ArrayList<Role>();
-        this.badgesList=new ArrayList<Badges>();
-        this.commentList=new ArrayList<Commentaire>();
         this.dateInscription= Calendar.getInstance().getTime();
 
     }
@@ -67,12 +55,12 @@ public class User {
         this.badgesList = badgesList;
     }
 
-    public int getIdUtilisateur() {
-        return idUtilisateur;
+    public int getIdUser() {
+        return idUser;
     }
 
     public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
+        this.idUser = idUtilisateur;
     }
 
     public String getNom() {

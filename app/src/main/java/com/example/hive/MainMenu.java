@@ -34,6 +34,9 @@ public class MainMenu extends AppCompatActivity{
                         case R.id.nav_home:
                             selectedFragment = new HomeFragment();
                             break;
+                        case R.id.nav_categorie:
+                            selectedFragment = new CategorieFragment();
+                            break;
                         case R.id.nav_add:
                             selectedFragment = new AddFragment();
                             break;

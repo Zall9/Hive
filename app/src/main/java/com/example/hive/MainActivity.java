@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hive.javaClasses.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity{
             estPassword = findViewById(R.id.text_password);
             eLogin = findViewById(R.id.button_login);
             estRegister = findViewById(R.id.link_to_sign_up);
-
             estRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,16 +77,19 @@ public class MainActivity extends AppCompatActivity{
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            boolean estValide = response.trim().equals("Success");
-                            if(!estValide){
+                            Log.d("REP",response);
+                            if (response.equals("Failure")){
                                 Toast.makeText(MainActivity.this, "Email/Password invalide !", Toast.LENGTH_SHORT).show();
                             }else{
+                                String[] tabreponse = response.split(",");
+                                User user = new User(Integer.parseInt(tabreponse[0]), tabreponse[1], tabreponse[2], tabreponse[3]);
                                 Toast.makeText(MainActivity.this, "Login successful !", Toast.LENGTH_SHORT).show();
-
                                 Intent intent = new Intent(MainActivity.this, MainMenu.class);
+                                intent.putExtra("User", user);
                                 startActivity(intent);
                                 //finish();
                             }
+
                         }
                     },
                     new Response.ErrorListener() {

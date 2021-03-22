@@ -6,13 +6,22 @@ import java.util.ArrayList;
 public class Topic {
     private int idTopic;
     public String nomTopic;
-    public ArrayList<Post> topicList;
+    public boolean estAbonne;
+    public ArrayList<Post> postList;
     public ArrayList<Role> topicRoleList;
+
+    public Topic(){
+        this.idTopic = -1;
+        this.nomTopic = "ErreurNomTopic";
+        this.estAbonne = false;
+        this.postList = new ArrayList<Post>();
+        this.topicRoleList = new ArrayList<Role>();
+    }
     //Constructeur à utiliser lors de la création d'un nouveau TOPIC (liste de posts vide)
     public Topic(int idTopic, String nomTopic){
         this.idTopic=idTopic;
         this.nomTopic=nomTopic;
-        this.topicList=new ArrayList<Post>();
+        this.postList=new ArrayList<Post>();
         this.topicRoleList=new ArrayList<Role>();
     }
 
@@ -20,7 +29,7 @@ public class Topic {
     public Topic(int idTopic, String nomTopic, ArrayList<Post> topicList, ArrayList<Role> topicRoleList){
         this.idTopic=idTopic;
         this.nomTopic=nomTopic;
-        this.topicList=topicList;
+        this.postList=topicList;
         this.topicRoleList=topicRoleList;
     }
 
@@ -48,11 +57,15 @@ public class Topic {
         this.nomTopic = nomTopic;
     }
 
-    public ArrayList<Post> getTopicList() {
-        return topicList;
+    public void setEstAbonne(boolean estAbonne) { this.estAbonne = estAbonne; }
+
+    public boolean isEstAbonne() { return estAbonne; }
+
+    public ArrayList<Post> getPostList() {
+        return postList;
     }
 
-    public void setTopicList(ArrayList<Post> topicList) {
-        this.topicList = topicList;
+    public void setPostList(ArrayList<Post> topicList) {
+        this.postList = topicList;
     }
 }

@@ -13,15 +13,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.hive.CategorieFragment;
 import com.example.hive.R;
+import com.example.hive.javaClasses.Categorie;
+import com.example.hive.javaClasses.User;
+import com.example.hive.utils.VolleyCallBack;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -34,6 +41,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,11 +62,15 @@ public class AddFragment extends Fragment {
 
     ProgressDialog progressDialog ;
 
-    String GetImageNameEditText;
+    String GetImageNameEditText, GetTopicNameEditText, GetCategorieNameSpinner = "orientation";
 
     String ImageName = "image_name" ;
 
     String ImagePath = "image_path" ;
+
+    Spinner spinnerCategorie;
+
+    EditText Topics;
 
     String ServerUploadPath ="http://os-vps418.infomaniak.ch:1180/l2_gr_8/img_upload_to_server.php" ;
 
@@ -72,6 +84,8 @@ public class AddFragment extends Fragment {
 
         imageName = (EditText)rootView.findViewById(R.id.editTextImageName);
 
+        Topics = (EditText)rootView.findViewById(R.id.text_topic);
+
         SelectImageGallery = (Button)rootView.findViewById(R.id.buttonSelect);
 
         UploadImageServer = (Button)rootView.findViewById(R.id.buttonUpload);
@@ -79,6 +93,34 @@ public class AddFragment extends Fragment {
         SelectImageGallery.setOnClickListener(selectListener);
 
         UploadImageServer.setOnClickListener(uploadListener);
+
+        spinnerCategorie = (Spinner) rootView.findViewById(R.id.spinner_categorie);
+        spinnerCategorie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                GetCategorieNameSpinner = String.valueOf(spinnerCategorie.getSelectedItem());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        Log.d("ALED", GetCategorieNameSpinner);
+
+        CategorieFragment.recupCategorie(getActivity(), new VolleyCallBack() {
+            @Override
+            public void onSuccess(ArrayList<Categorie> result) {
+                String[] lCategorie = new String[result.size()];
+                for(int i=0; i<result.size();i++){
+                    lCategorie[i] = result.get(i).toString();
+                }
+                ArrayAdapter<String> dataAdapterR = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, lCategorie);
+                dataAdapterR.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerCategorie.setAdapter(dataAdapterR);
+            }
+        });
 
 
         return rootView;
@@ -133,6 +175,8 @@ public class AddFragment extends Fragment {
 
                 super.onPostExecute(string1);
 
+                Toast.makeText(getActivity(), string1, Toast.LENGTH_SHORT).show();
+
                 // Dismiss the progress dialog after done uploading.
                 progressDialog.dismiss();
 
@@ -149,6 +193,7 @@ public class AddFragment extends Fragment {
 
             @Override
             protected String doInBackground(Void... params) {
+                User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
 
                 ImageProcessClass imageProcessClass = new ImageProcessClass();
 
@@ -158,8 +203,15 @@ public class AddFragment extends Fragment {
 
                 HashMapParams.put(ImagePath, ConvertImage);
 
-                String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
+                HashMapParams.put("idUser", String.valueOf(user.getIdUser()));
 
+                HashMapParams.put("nomCategorie", GetCategorieNameSpinner);
+
+                HashMapParams.put("nomTopic", GetTopicNameEditText);
+
+                String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
+                /*TODO Dans les Catégorie il faut toujours avoir orientation en premier -> valeur par défaut
+                TODO Sinon modifer la valeur par défaut de GetCategorieNameSpinner*/
                 return FinalData;
             }
         }
@@ -279,6 +331,8 @@ public class AddFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     GetImageNameEditText = imageName.getText().toString();
+                    GetTopicNameEditText = Topics.getText().toString();
+                    //Spinner
                     ImageUploadToServerFunction();
                 }
             };
