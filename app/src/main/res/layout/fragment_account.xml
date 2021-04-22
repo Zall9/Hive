@@ -1,14 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    tools:context=".ComptePackage.AccountFragment">
+    <RelativeLayout
+        android:id="@+id/info_compte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navbar">
+
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_user"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp" />
+
+        <TextView
+            android:id="@+id/user_prenom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prenom"
+            android:layout_toEndOf="@id/user_nom"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="7dp"/>
+
+        <TextView
+            android:id="@+id/user_nom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom"
+            android:layout_toEndOf="@id/user_icon"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="7dp"/>
+
+        <ImageView
+            android:id="@+id/user_image_nblike"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/user_nom"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_baseline_favorite_orange_24"/>
+
+        <TextView
+            android:id="@+id/user_nbLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_below="@id/user_nom"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/user_nbLike_Text"
+            android:layout_marginLeft="7dp"/>
+
+        <TextView
+            android:id="@+id/user_nbLike_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nbLike : "
+            android:layout_below="@id/user_nom"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/user_image_nblike"
+            android:layout_marginLeft="7dp"/>
+
+
+        <ImageView
+            android:id="@+id/user_image_nbpost"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/user_nom"
+            android:layout_toEndOf="@id/user_nbLike"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/hive"/>
+
+        <TextView
+            android:id="@+id/user_nbPost_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nbPost : "
+            android:layout_below="@id/user_nom"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/user_image_nbpost"
+            android:layout_marginLeft="7dp"/>
+
+        <TextView
+            android:id="@+id/user_nbPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_below="@id/user_nom"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/user_nbPost_Text"
+            android:layout_marginLeft="7dp"/>
+
+        <TextView
+            android:id="@+id/user_liste_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Liste Badges "
+            android:layout_marginTop="7dp"
+            android:layout_below="@id/user_image_nbpost"
+            android:textSize="20sp"/>
+
+        <RelativeLayout
+            android:id="@+id/user_linear_layout_liste_badge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:layout_below="@+id/user_liste_badge">
+
+            <TextView
+                android:id="@+id/liste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liste a faire"
+                android:textSize="25sp"/>
+            <ImageView
+                android:id="@+id/image_badge"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_toEndOf="@id/liste"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_loupe"
+                />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 
     <TextView
+        android:id="@+id/user_liste_topic_abonne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment compte"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:text="Liste des Topic Abonnés"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/info_compte"
+        android:layout_centerInParent="true"
+        android:textSize="25sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_topic_abonne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/cardview_topics_abonne"
+        android:layout_below="@id/user_liste_topic_abonne"
+        android:scrollbars="vertical"/>
 
 </RelativeLayout>

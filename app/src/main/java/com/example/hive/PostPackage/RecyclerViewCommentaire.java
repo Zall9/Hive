@@ -1,15 +1,15 @@
-package com.example.hive;
+package com.example.hive.PostPackage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hive.R;
 import com.example.hive.javaClasses.Commentaire;
 
 import java.util.ArrayList;

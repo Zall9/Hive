@@ -8,17 +8,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/hive"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/hive"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hive"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PostActivity"></activity>
-        <activity android:name=".DescriptionCategorie" />
-        <activity android:name=".Register" />
-        <activity android:name=".MainMenu" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ComptePackage.AdminPanel"></activity>
+        <activity android:name=".PostPackage.PostActivity" />
+        <activity android:name=".CategoriePackage.DescriptionCategorie" />
+        <activity android:name=".Connexion.Register" />
+        <activity android:name=".PostPackage.MainMenu" />
+        <activity android:name=".Connexion.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

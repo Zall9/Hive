@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp"
+    card_view:cardMaxElevation="5dp"
+    card_view:contentPadding="5dp">
+
+    <RelativeLayout
+        android:id="@+id/cardview_topic_abonne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_grey">
+
+        <TextView
+            android:id="@+id/cardview_topic_abonne_nom_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom Topic"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:id="@+id/cardview_topic_abonne_role_topic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Role dans le Topic"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_below="@id/cardview_topic_abonne_nom_topic"/>
+        <!--TODO rajouté un bouton abonner/désabonner-->
+        <ImageView
+            android:id="@+id/cardview_topic_abonne_param_topic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="20dp"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
