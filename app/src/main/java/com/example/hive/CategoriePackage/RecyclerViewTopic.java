@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.CategoriePackage;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,11 +19,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hive.LoadPackage.DataAdapter;
-import com.example.hive.LoadPackage.RecyclerViewAdapter;
+import com.example.hive.R;
 import com.example.hive.javaClasses.Topic;
 import com.example.hive.javaClasses.User;
 

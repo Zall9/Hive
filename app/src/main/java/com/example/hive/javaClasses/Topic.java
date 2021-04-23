@@ -33,6 +33,14 @@ public class Topic {
         this.topicRoleList=topicRoleList;
     }
 
+    public Topic(String nomTopic){
+        this.idTopic = -1;
+        this.nomTopic = nomTopic;
+        this.estAbonne = false;
+        this.postList = new ArrayList<Post>();
+        this.topicRoleList = new ArrayList<Role>();
+    }
+
     public ArrayList<Role> getTopicRoleList() {
         return topicRoleList;
     }

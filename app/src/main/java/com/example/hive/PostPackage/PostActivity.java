@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.PostPackage;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +26,8 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hive.LoadPackage.ImageAdapter;
+import com.example.hive.R;
 import com.example.hive.javaClasses.Commentaire;
-import com.example.hive.javaClasses.Topic;
 import com.example.hive.javaClasses.User;
 
 import org.json.JSONArray;

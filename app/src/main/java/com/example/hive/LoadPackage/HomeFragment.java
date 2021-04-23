@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 import androidx.fragment.app.Fragment;
@@ -20,13 +19,10 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hive.DescriptionCategorie;
-import com.example.hive.PostActivity;
+import com.example.hive.PostPackage.PostActivity;
 import com.example.hive.R;
-import com.example.hive.javaClasses.Role;
 import com.example.hive.javaClasses.User;
 
 import org.json.JSONArray;
@@ -226,8 +222,8 @@ public class HomeFragment extends Fragment {
     }
 
 
-    public String gererRole(ArrayList<String> listeRole){
-        //(Dieu) >Créateur > Admin > Membre
+    public static String gererRole(ArrayList<String> listeRole){
+        //(Dieu) >Créateur > Admin > Utilisateur certifié > Membre
         //Pour Wayntal -> le prof loufoque
         String rolePlusHaut ="";
         for (String r: listeRole) {

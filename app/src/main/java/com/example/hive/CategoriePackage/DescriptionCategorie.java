@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.CategoriePackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,12 +14,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hive.LoadPackage.DataAdapter;
-import com.example.hive.LoadPackage.RecyclerViewAdapter;
-import com.example.hive.javaClasses.Categorie;
+import com.example.hive.R;
 import com.example.hive.javaClasses.Topic;
 import com.example.hive.javaClasses.User;
 
@@ -32,7 +29,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DescriptionCategorie extends AppCompatActivity {
-
+    /*
+    Fichier permettant de gérer les Topics de chaque Catégorie
+     */
     private StringRequest RequestOfJSonArray;
     private String HTTP_JSON_URL = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/recup_topic.php";
 

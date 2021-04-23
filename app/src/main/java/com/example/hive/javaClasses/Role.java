@@ -20,8 +20,12 @@ public class Role {
         this.idRole = idRole;
     }
 
-    Role(String nomRole, int idRole){
+    public Role(String nomRole, int idRole){
         this.nomRole=nomRole;
         this.idRole=idRole;
+    }
+
+    public Role(String nomRole){
+        this.nomRole = nomRole;
     }
 }

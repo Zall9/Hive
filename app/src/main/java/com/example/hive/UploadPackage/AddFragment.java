@@ -24,7 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.hive.CategorieFragment;
+import com.example.hive.CategoriePackage.CategorieFragment;
 import com.example.hive.R;
 import com.example.hive.javaClasses.Categorie;
 import com.example.hive.javaClasses.User;

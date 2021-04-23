@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.PostPackage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.hive.ComptePackage.AccountFragment;
+import com.example.hive.CategoriePackage.CategorieFragment;
 import com.example.hive.LoadPackage.HomeFragment;
+import com.example.hive.R;
 import com.example.hive.UploadPackage.AddFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
