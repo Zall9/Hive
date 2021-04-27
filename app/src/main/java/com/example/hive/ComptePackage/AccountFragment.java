@@ -131,6 +131,7 @@ public class AccountFragment extends Fragment {
                 json = listeTopicRoleJSON.getJSONObject(i);
                 String nomTopic = json.getString("nomTopic");
                 JSONArray listeRoleJSON = json.getJSONArray("Role");
+                String idCategorie = json.getString("idCategorie");
 
                 ArrayList<String> listeRole = new ArrayList<String>();
                 for(int j=0; j<listeRoleJSON.length(); j++){
@@ -140,9 +141,10 @@ public class AccountFragment extends Fragment {
                 listeDeRoles.add(listeRole);
                 Role r = new Role(HomeFragment.gererRole(listeRole), user.idUser);
                 Topic t = new Topic(nomTopic);
-                String [] tempo = new String[2];
+                String [] tempo = new String[3];
                 tempo[0] = t.getNomTopic();
                 tempo[1] = r.getNomRole();
+                tempo[2]  = idCategorie;
                 listeTopicRoles.add(tempo);
 
 

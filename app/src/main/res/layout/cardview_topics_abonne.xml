@@ -38,7 +38,6 @@
             android:id="@+id/cardview_topic_abonne_param_topic"
             android:layout_width="50dp"
             android:layout_height="50dp"
-
             android:layout_alignParentEnd="true"
             android:layout_marginTop="7dp"
             android:layout_marginRight="20dp"

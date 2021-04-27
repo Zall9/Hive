@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hive"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ComptePackage.AdminPanel"></activity>
+        <activity android:name=".AdminPanelGroupe"></activity>
+        <activity android:name=".ComptePackage.AdminPanel" />
         <activity android:name=".PostPackage.PostActivity" />
         <activity android:name=".CategoriePackage.DescriptionCategorie" />
         <activity android:name=".Connexion.Register" />

@@ -45,6 +45,7 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<RecyclerViewCompte.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String nomTopic = adapterTopicAbo.getListeTopicRole().get(position)[0];
         ArrayList<String> listeNomRole = listeRoles.get(position);
+        int idCategorie = Integer.parseInt(adapterTopicAbo.getListeTopicRole().get(position)[2]);
         String temp = "";
         for (int i = 0; i < listeNomRole.size(); i++) {
             if(i!=0){
@@ -68,6 +69,8 @@ public class RecyclerViewCompte extends RecyclerView.Adapter<RecyclerViewCompte.
                     intent.putExtra("nomTopic", nomTopic);
                     User user = (User)activity.getIntent().getExtras().getSerializable("User");
                     intent.putExtra("idUser", user.getIdUser());
+                    intent.putExtra("listeRoles", listeNomRole);
+                    intent.putExtra("idCategorie", idCategorie);
                     activity.startActivity(intent);
                 }
             });

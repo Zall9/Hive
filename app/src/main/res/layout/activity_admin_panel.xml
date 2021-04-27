@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ComptePackage.AdminPanel">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="OH MINO LA BONNE VINASSE"
-        android:textSize="45sp"
-        android:textColor="@color/red"/>
+    <ImageView
+        android:id="@+id/panel_admin_image_groupe"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_admin_panel_groupe"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        />
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/admin_panel_button_groupe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestion du groupe"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_below="@id/panel_admin_image_groupe"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/admin_panel_button_posts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestion des Posts"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/admin_panel_button_groupe"
+        android:textSize="20sp"
+        android:layout_marginTop="25sp"/>
+
+    <ImageView
+        android:id="@+id/panel_admin_image_posts"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/ic_admin_panel_posts"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/admin_panel_button_posts"
+        />
+
+</RelativeLayout>

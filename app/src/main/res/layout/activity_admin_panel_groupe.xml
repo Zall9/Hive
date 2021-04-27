@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AdminPanelGroupe">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/admin_panel_groupe_createur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Créateur"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
+
+        <TextView
+            android:id="@+id/admin_panel_groupe_nom_createur"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="19dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginBottom="15dp"
+            android:text="Nom Créateur"
+            android:textColor="@color/red"/>
+
+        <TextView
+            android:id="@+id/admin_panel_groupe_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admins"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/admin_panel_recyclerview_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="15dp"
+            tools:listitem="@layout/cardview_admin_panel_utilisateur" />
+
+        <TextView
+            android:id="@+id/admin_panel_groupe_membre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Membre"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/admin_panel_recyclerview_membre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/cardview_admin_panel_utilisateur" />
+
+    </LinearLayout>
+
+
+
+</ScrollView>
