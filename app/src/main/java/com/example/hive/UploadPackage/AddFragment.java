@@ -181,9 +181,10 @@ public class AddFragment extends Fragment {
                 progressDialog.dismiss();
 
                 String messageSucces = "Votre post à bien été envoyer au serveur";
-
-                // Printing uploading success message coming from server on android app.
-                Toast.makeText(getActivity(),messageSucces,Toast.LENGTH_LONG).show();
+                if(!(string1.equals("Vous êtes banni de ce Topic !"))){
+                    // Printing uploading success message coming from server on android app.
+                    Toast.makeText(getActivity(),messageSucces,Toast.LENGTH_LONG).show();
+                }
 
                 // Setting image as transparent after done uploading.
                 imageView.setImageResource(android.R.color.transparent);

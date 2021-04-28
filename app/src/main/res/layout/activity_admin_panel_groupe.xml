@@ -70,6 +70,25 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/cardview_admin_panel_utilisateur" />
 
+        <TextView
+            android:id="@+id/admin_panel_groupe_banni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Membre Banni"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_margin="3dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/admin_panel_recyclerview_banni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/cardview_admin_panel_utilisateur" />
+
     </LinearLayout>
 
 

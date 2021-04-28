@@ -42,9 +42,9 @@ public class AdminPanelGroupe extends AppCompatActivity {
     private RequestQueue requestQueue ;
     private String HTTP_JSON_URL = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/recup_utilisateur_topic.php";
     private TextView createurTV;
-    private RecyclerView adminsRV, membresRV;
-    private RecyclerViewListeUt recyclerViewListeA, recyclerViewListeM;
-    private RecyclerView.LayoutManager layoutManagerOfrecyclerView, layoutManagerOfrecyclerView2;
+    private RecyclerView adminsRV, membresRV, banniRV;
+    private RecyclerViewListeUt recyclerViewListeA, recyclerViewListeM, recyclerViewListeB;
+    private RecyclerView.LayoutManager layoutManagerOfrecyclerView, layoutManagerOfrecyclerView2, layoutManagerOfrecyclerView3;
 
 
     @Override
@@ -62,13 +62,17 @@ public class AdminPanelGroupe extends AppCompatActivity {
 
         adminsRV = (RecyclerView) findViewById(R.id.admin_panel_recyclerview_admin);
         membresRV = (RecyclerView) findViewById(R.id.admin_panel_recyclerview_membre);
+        banniRV = (RecyclerView) findViewById(R.id.admin_panel_recyclerview_banni);
 
         adminsRV.setHasFixedSize(true);
         membresRV.setHasFixedSize(true);
+        banniRV.setHasFixedSize(true);
         layoutManagerOfrecyclerView = new LinearLayoutManager(this);
         layoutManagerOfrecyclerView2 = new LinearLayoutManager(this);
+        layoutManagerOfrecyclerView3 = new LinearLayoutManager(this);
         adminsRV.setLayoutManager(layoutManagerOfrecyclerView);
         membresRV.setLayoutManager(layoutManagerOfrecyclerView2);
+        banniRV.setLayoutManager(layoutManagerOfrecyclerView3);
 
         JSON_HTTP_CALL();
 
@@ -94,10 +98,8 @@ public class AdminPanelGroupe extends AppCompatActivity {
                             ParseJSonResponse(jsonObject);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.d("RORO", e.toString());
+
                         }
-
-
 
                     }
                 },
@@ -127,27 +129,44 @@ public class AdminPanelGroupe extends AppCompatActivity {
     public void ParseJSonResponse(JSONObject object) throws JSONException {
         ArrayList<String> listeAdmins = new ArrayList<String>();
         ArrayList<String> listeMembres = new ArrayList<String>();
+        ArrayList<String> listeBanni = new ArrayList<String>();
+        ArrayList<Integer> listeAdminsId = new ArrayList<Integer>();
+        ArrayList<Integer> listeMembreId = new ArrayList<Integer>();
+        ArrayList<Integer> listeBanniId = new ArrayList<Integer>();
         JSONArray createurJSON = object.getJSONArray("Créateur");
         JSONArray adminsJSON = object.getJSONArray("Admin");
         JSONArray membresJSON = object.getJSONArray("Membre");
+        JSONArray banniJSON = object.getJSONArray("Banni");
+        JSONArray adminsIdJSON = object.getJSONArray("AdminId");
+        JSONArray membreIdJSON = object.getJSONArray("MembreId");
+        JSONArray banniIDJSON = object.getJSONArray("BanniId");
+
 
         String createur = createurJSON.getString(0);
         for(int i = 0; i<adminsJSON.length(); i++) {
             try {
                 listeAdmins.add(adminsJSON.getString(i));
-
+                listeAdminsId.add(adminsIdJSON.getInt(i));
             } catch (JSONException e) {
 
                 e.printStackTrace();
             }
 
         }
-
-
         for(int i = 0; i<membresJSON.length(); i++) {
             try {
                 listeMembres.add(membresJSON.getString(i));
+                listeMembreId.add(membreIdJSON.getInt(i));
+            } catch (JSONException e) {
 
+                e.printStackTrace();
+            }
+
+        }
+        for(int i = 0; i<banniJSON.length(); i++) {
+            try {
+                listeBanni.add(banniJSON.getString(i));
+                listeBanniId.add(banniIDJSON.getInt(i));
             } catch (JSONException e) {
 
                 e.printStackTrace();
@@ -156,11 +175,13 @@ public class AdminPanelGroupe extends AppCompatActivity {
         }
 
         createurTV.setText(createur);
-        recyclerViewListeA = new RecyclerViewListeUt(listeAdmins, rolePlusHaut, "Admin");
-        recyclerViewListeM = new RecyclerViewListeUt(listeMembres, rolePlusHaut, "Membre");
+        recyclerViewListeA = new RecyclerViewListeUt(listeAdmins, rolePlusHaut, "Admin", listeAdminsId, idCategorie, nomTopic, this, this);
+        recyclerViewListeM = new RecyclerViewListeUt(listeMembres, rolePlusHaut, "Membre", listeMembreId, idCategorie, nomTopic, this, this);
+        recyclerViewListeB = new RecyclerViewListeUt(listeBanni, rolePlusHaut, "Banni", listeBanniId, idCategorie, nomTopic, this, this);
 
         adminsRV.setAdapter(recyclerViewListeA);
         membresRV.setAdapter(recyclerViewListeM);
+        banniRV.setAdapter(recyclerViewListeB);
 
     }
 }
