@@ -14,13 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hive"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminPanelGroupe"></activity>
-        <activity android:name=".ComptePackage.AdminPanel" />
-        <activity android:name=".PostPackage.PostActivity" />
-        <activity android:name=".CategoriePackage.DescriptionCategorie" />
-        <activity android:name=".Connexion.Register" />
-        <activity android:name=".PostPackage.MainMenu" />
-        <activity android:name=".Connexion.MainActivity">
+        <activity android:name=".FullScreenImageActivity"></activity>
+        <activity
+            android:name=".AdminPanelGroupe"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ComptePackage.AdminPanel"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PostPackage.PostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CategoriePackage.DescriptionCategorie"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Connexion.Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PostPackage.MainMenu"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Connexion.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

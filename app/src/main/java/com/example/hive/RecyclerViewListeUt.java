@@ -124,6 +124,13 @@ public class RecyclerViewListeUt extends RecyclerView.Adapter<RecyclerViewListeU
         }else if(rolePlusHaut.equals("Admin") && listeAafficher.equals("Membre")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             holder.upgradeIM.setImageResource(R.drawable.ic_upgrade);
+            holder.upgradeIM.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    gereGrade(listeUtId.get(position), "upgrade");
+                    refresh();
+                }
+            });
             holder.banIM.setImageResource(R.drawable.ic_ban);
 
             holder.banIM.setOnClickListener(new View.OnClickListener() {

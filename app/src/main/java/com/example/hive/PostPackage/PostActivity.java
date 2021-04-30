@@ -5,14 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Binder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +31,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hive.FullScreenImageActivity;
 import com.example.hive.LoadPackage.ImageAdapter;
 import com.example.hive.R;
 import com.example.hive.javaClasses.Commentaire;
@@ -46,6 +53,7 @@ public class PostActivity extends AppCompatActivity {
     private ImageLoader imageLoader;
     private NetworkImageView VollyImageView ;
     private Button buttonCommenter;
+    private ImageView downloadIM;
     private String commentaire = "";
     private RecyclerView recList;
     private StringRequest RequestOfJSonArray;
@@ -86,6 +94,8 @@ public class PostActivity extends AppCompatActivity {
         buttonCommenter = (Button) findViewById(R.id.button_commenter_post);
 
         RoleTV = (TextView) findViewById(R.id.post_activity_role);
+
+        downloadIM = (ImageView) findViewById(R.id.download_button_post);
 
         buttonCommenter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +154,37 @@ public class PostActivity extends AppCompatActivity {
         );
 
         VollyImageView.setImageUrl(UrlImage, imageLoader);
+        VollyImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostActivity.this, FullScreenImageActivity.class);
+                intent.putExtra("UrlImage", UrlImage);
+
+                startActivity(intent);
+            }
+        });
+
+        downloadIM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(UrlImage);
+                DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+
+                request.setTitle("Fichier téléchargé");
+                request.setDescription("Ca télécharge");
+
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, nomPost+".png");
+                request.setMimeType("*/*");
+                Toast.makeText(PostActivity.this, "Votre image se télécharge", Toast.LENGTH_SHORT).show();
+                downloadManager.enqueue(request);
+            }
+        });
+
         String full_name = nomAuteur+" "+prenomAuteur;
         auteurTV.setText(full_name);
         PostTV.setText(nomPost);
@@ -272,5 +313,18 @@ public class PostActivity extends AppCompatActivity {
         recList.setAdapter(rvc);
 
 
+    }
+
+    public static class ObjectWrapperForBinder extends Binder {
+
+        private final Object mData;
+
+        public ObjectWrapperForBinder(Object data) {
+            mData = data;
+        }
+
+        public Object getData() {
+            return mData;
+        }
     }
 }
