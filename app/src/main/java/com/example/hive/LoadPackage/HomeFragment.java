@@ -145,7 +145,7 @@ public class HomeFragment extends Fragment {
                 GetDataAdapter2.setImageTopic(json.getString(Topic_JSON));
                 GetDataAdapter2.setImageCategorie(json.getString(Categorie_JSON));
                 GetDataAdapter2.setImagenbLike(json.getString(nbLike_JSON));
-
+                GetDataAdapter2.setaLike(json.getBoolean("aLike"));
                 JSONArray jsonArrayRole = json.getJSONArray(listeRole_JSON);
                 ArrayList<String> listeRole = new ArrayList<String>();
                 for(int j=0; j<jsonArrayRole.length(); j++){

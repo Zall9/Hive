@@ -10,6 +10,7 @@ public class DataAdapter
     private String ImageCategorie;
     private String ImagenbLike;
     private String ImageRole;
+    private boolean aLike;
 
     public String getImageUrl() {
         return ImageURL;
@@ -43,10 +44,7 @@ public class DataAdapter
     public String getImageRole() { return ImageRole; }
     public void setImageRole(String imageRole) { ImageRole = imageRole; }
 
+    public boolean getaLike() { return aLike; }
 
-
-
-
-
-
+    public void setaLike(boolean aLike) { this.aLike = aLike; }
 }

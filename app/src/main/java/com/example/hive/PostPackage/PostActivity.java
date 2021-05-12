@@ -51,6 +51,7 @@ public class PostActivity extends AppCompatActivity {
     private int idUser;
     private TextView auteurTV, PostTV, CategorieTV, TopicTV, nbLikeTV, RoleTV;
     private ImageLoader imageLoader;
+    private boolean ouvrirCommentaire;
     private NetworkImageView VollyImageView ;
     private Button buttonCommenter;
     private ImageView downloadIM;
@@ -78,7 +79,7 @@ public class PostActivity extends AppCompatActivity {
         nbLike = getIntent().getExtras().getString("nbLike");
         idUser = getIntent().getExtras().getInt("idUser");
         role = getIntent().getExtras().getString("Role");
-
+        ouvrirCommentaire = getIntent().getExtras().getBoolean("ouvrirCommentaire");
         auteurTV = (TextView) findViewById(R.id.post_activity_auteur);
 
         PostTV = (TextView) findViewById(R.id.post_activity_nom_post);
@@ -97,48 +98,14 @@ public class PostActivity extends AppCompatActivity {
 
         downloadIM = (ImageView) findViewById(R.id.download_button_post);
 
+        if(ouvrirCommentaire){
+            commenter();
+        }
+
         buttonCommenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(PostActivity.this);
-                builder.setTitle("Commentaire");
-
-                // Set up the input
-                final EditText input = new EditText(PostActivity.this);
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-                builder.setView(input);
-
-                // Set up the buttons
-                builder.setPositiveButton("Envoyer", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        commentaire = input.getText().toString();
-                        ajouterCommentaire(commentaire);
-
-                        Intent intent = getIntent();
-
-                        intent.putExtra("nomAuteur", nomAuteur);
-                        intent.putExtra("prenomAuteur", prenomAuteur);
-                        intent.putExtra("nomPost", nomPost);
-                        intent.putExtra("nomCategorie", nomCategorie);
-                        intent.putExtra("nomTopic", nomTopic);
-                        intent.putExtra("urlImage", UrlImage);
-                        intent.putExtra("nbLike", nbLike);
-                        intent.putExtra("idUser", idUser);
-                        finish();
-                        startActivity(intent);
-
-                    }
-                });
-                builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
+                commenter();
             }
         }
         );
@@ -326,5 +293,48 @@ public class PostActivity extends AppCompatActivity {
         public Object getData() {
             return mData;
         }
+    }
+
+    public void commenter(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(PostActivity.this);
+        builder.setTitle("Commentaire");
+
+        // Set up the input
+        final EditText input = new EditText(PostActivity.this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("Envoyer", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                commentaire = input.getText().toString();
+                ajouterCommentaire(commentaire);
+
+                Intent intent = getIntent();
+
+                intent.putExtra("nomAuteur", nomAuteur);
+                intent.putExtra("prenomAuteur", prenomAuteur);
+                intent.putExtra("nomPost", nomPost);
+                intent.putExtra("nomCategorie", nomCategorie);
+                intent.putExtra("nomTopic", nomTopic);
+                intent.putExtra("urlImage", UrlImage);
+                intent.putExtra("nbLike", nbLike);
+                intent.putExtra("idUser", idUser);
+                intent.putExtra("ouvrirCommentaire", false);
+                finish();
+                startActivity(intent);
+
+            }
+        });
+        builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 }

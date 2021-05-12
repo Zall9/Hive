@@ -4,22 +4,33 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.hive.PostPackage.PostActivity;
 import com.example.hive.R;
 import com.example.hive.javaClasses.User;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
@@ -48,7 +59,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder Viewholder, int position) {
-
         DataAdapter dataAdapterOBJ =  dataAdapters.get(position);
         User user = (User)actvity.getIntent().getExtras().getSerializable("User");
         imageLoader = ImageAdapter.getInstance(context).getImageLoader();
@@ -75,9 +85,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("nomTopic", dataAdapterOBJ.getImageTopic());
                 intent.putExtra("urlImage", dataAdapterOBJ.getImageUrl());
                 intent.putExtra("nbLike", dataAdapterOBJ.getImagenbLike());
-
                 intent.putExtra("idUser", user.getIdUser());
                 intent.putExtra("Role", dataAdapterOBJ.getImageRole());
+                intent.putExtra("ouvrirCommentaire", false);
                 actvity.startActivity(intent);
             }
         });
@@ -85,15 +95,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Viewholder.likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                likePost(user, dataAdapterOBJ.getImageCategorie(), dataAdapterOBJ.getImageTopic(), dataAdapterOBJ.getImageTitle());
-                //TODO faire la fonction boloss
+                likePost(user, dataAdapterOBJ.getImageCategorie(), dataAdapterOBJ.getImageTopic(), dataAdapterOBJ.getImageTitle(), Viewholder.likeButton, Viewholder.ImageNbLikeTextView, dataAdapterOBJ);
             }
         });
 
         Viewholder.commentaireButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO mettre l'intent + le pop up du commentaire
+                Intent intent = new Intent(actvity, PostActivity.class);
+                intent.putExtra("nomAuteur", dataAdapterOBJ.getImageNomAuteur());
+                intent.putExtra("prenomAuteur", dataAdapterOBJ.getImagePrenomAuteur());
+                intent.putExtra("nomPost", dataAdapterOBJ.getImageTitle());
+                intent.putExtra("nomCategorie", dataAdapterOBJ.getImageCategorie());
+                intent.putExtra("nomTopic", dataAdapterOBJ.getImageTopic());
+                intent.putExtra("urlImage", dataAdapterOBJ.getImageUrl());
+                intent.putExtra("nbLike", dataAdapterOBJ.getImagenbLike());
+
+                intent.putExtra("idUser", user.getIdUser());
+                intent.putExtra("Role", dataAdapterOBJ.getImageRole());
+                intent.putExtra("ouvrirCommentaire", true);
+                actvity.startActivity(intent);
             }
         });
 
@@ -107,6 +128,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Viewholder.ImageCategorieTextView.setText(c);
         Viewholder.ImageNbLikeTextView.setText(dataAdapterOBJ.getImagenbLike());
         Viewholder.ImageRole.setText(dataAdapterOBJ.getImageRole());
+        if(dataAdapterOBJ.getaLike()){
+            Viewholder.likeButton.setBackgroundResource(R.drawable.ic_baseline_favorite_orange_24);
+        }else{
+            Viewholder.likeButton.setBackgroundResource(R.drawable.ic_baseline_favorite_grey_24);
+        }
     }
 
     @Override
@@ -131,9 +157,52 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public String getRole(int position){ return dataAdapters.get(position).getImageRole();}
 
+
+    public void likePost(User user, String nomCategorie, String nomTopic, String nomPost, AppCompatButton likePost, TextView nbLike, DataAdapter dataAdapterOBJ){
+        String url = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/like_post.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        int valNbLike = Integer.parseInt(nbLike.getText().toString());
+                        if (response.equals("Vous avez dislike")){
+                            likePost.setBackgroundResource(R.drawable.ic_baseline_favorite_grey_24);
+                            valNbLike -= 1;
+                            dataAdapterOBJ.setaLike(false);
+                        }else{
+                            likePost.setBackgroundResource(R.drawable.ic_baseline_favorite_orange_24);
+                            valNbLike += 1;
+                            dataAdapterOBJ.setaLike(true);
+                        }
+
+                        nbLike.setText(String.valueOf(valNbLike));
+                        dataAdapterOBJ.setImagenbLike(String.valueOf(valNbLike));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(actvity, error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("idUser", String.valueOf(user.getIdUser()));
+                params.put("nomPost", nomPost);
+                params.put("nomTopic", nomTopic);
+                params.put("nomCategorie", nomCategorie);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(actvity);
+        requestQueue.add(stringRequest);
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView, ImageRole;
+        public TextView ImageTitleTextView, ImageAuteurTextView, ImageTopicTextView, ImageCategorieTextView, ImageNbLikeTextView, ImageRole, nbLike;
 
         public NetworkImageView VollyImageView ;
 
@@ -166,6 +235,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             commentaireButton = (AppCompatButton) itemView.findViewById(R.id.checkBox3);
 
+
         }
     }
+
 }
