@@ -10,11 +10,79 @@
     card_view:cardMaxElevation="5dp"
     card_view:contentPadding="5dp">
 
-    <RelativeLayout
-        android:id="@+id/Father"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#f9ffaa">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/Father"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f9ffaa">
+
+
+            <TextView
+                android:id="@+id/nom_auteur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/cardview_info_size"
+                android:text="Auteur"/>
+
+            <TextView
+                android:id="@+id/role_auteur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/nom_auteur"
+                android:text="Role"
+                android:layout_marginLeft="15dp"
+                android:textSize="21sp"/>
+
+            <TextView
+                android:id="@+id/nom_topic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nom_auteur"
+                android:textSize="@dimen/cardview_info_size"
+                android:text="Topic"/>
+
+
+            <TextView
+                android:id="@+id/nom_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/nom_topic"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:foregroundGravity="center_vertical"
+
+                android:layout_marginBottom="-24dp"
+
+                android:text="JSon Image Name"
+                android:textColor="#000"
+                android:textSize="20dp" />
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/VolleyImageView"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="370dp"
+                android:layout_below="@+id/nom_post"
+
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/nom_categorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/VolleyImageView"
+                android:textSize="@dimen/cardview_info_size"
+                android:text="Catégorie"/>
+
+
+
+        </RelativeLayout>
 
 
         <RelativeLayout
@@ -36,7 +104,7 @@
                 android:layout_alignParentBottom="true"
 
 
-                android:background="@drawable/ic_baseline_favorite_orange_24"
+                android:background="@drawable/ic_baseline_favorite_grey_24"
                 android:gravity="center_vertical" />
 
             <TextView
@@ -68,68 +136,7 @@
                 card_view:srcCompat="@android:drawable/ic_menu_share" />
 
         </RelativeLayout>
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/nom_auteur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/cardview_info_size"
-            android:text="Auteur"/>
-
-        <TextView
-            android:id="@+id/role_auteur"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/nom_auteur"
-            android:text="Role"
-            android:layout_marginLeft="15dp"
-            android:textSize="21sp"/>
-
-        <TextView
-            android:id="@+id/nom_topic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nom_auteur"
-            android:textSize="@dimen/cardview_info_size"
-            android:text="Topic"/>
-
-
-        <TextView
-            android:id="@+id/nom_post"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_below="@+id/nom_topic"
-            android:layout_alignParentStart="true"
-            android:gravity="center_horizontal"
-            android:foregroundGravity="center_vertical"
-
-            android:layout_marginBottom="-24dp"
-
-            android:text="JSon Image Name"
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-        <com.android.volley.toolbox.NetworkImageView
-            android:id="@+id/VolleyImageView"
-            android:layout_marginTop="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="370dp"
-            android:layout_below="@+id/nom_post"
-
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/nom_categorie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/VolleyImageView"
-            android:textSize="@dimen/cardview_info_size"
-            android:text="Catégorie"/>
-
-
-
-
-    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

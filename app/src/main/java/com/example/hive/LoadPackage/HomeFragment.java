@@ -78,58 +78,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManagerOfrecyclerView);
         JSON_HTTP_CALL();
 
-        // Implementing Click Listener on RecyclerView.
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
-            GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
-
-                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
-
-                    return true;
-                }
-
-            });
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
-
-                view = Recyclerview.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
-
-                if(view != null && gestureDetector.onTouchEvent(motionEvent)) {
-
-                    //Getting RecyclerView Clicked Item value.
-                    RecyclerViewItemPosition = Recyclerview.getChildAdapterPosition(view);
-
-                    Intent intent = new Intent(getActivity(), PostActivity.class);
-                    //intent.putExtra("nomCategorie", categorieClique.toString());
-                    intent.putExtra("nomAuteur", recyclerViewadapter.getNomAuteur(RecyclerViewItemPosition));
-                    intent.putExtra("prenomAuteur", recyclerViewadapter.getPrenomAuteur(RecyclerViewItemPosition));
-                    intent.putExtra("nomPost", recyclerViewadapter.getNomPost(RecyclerViewItemPosition));
-                    intent.putExtra("nomCategorie", recyclerViewadapter.getCategorie(RecyclerViewItemPosition));
-                    intent.putExtra("nomTopic", recyclerViewadapter.getTopic(RecyclerViewItemPosition));
-                    intent.putExtra("urlImage", recyclerViewadapter.getImageUrl(RecyclerViewItemPosition));
-                    intent.putExtra("nbLike", recyclerViewadapter.getNbLike(RecyclerViewItemPosition));
-                    User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
-                    intent.putExtra("idUser", user.getIdUser());
-                    intent.putExtra("Role", recyclerViewadapter.getRole(RecyclerViewItemPosition));
-                    startActivity(intent);
-
-
-
-                }
-
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView Recyclerview, MotionEvent motionEvent) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
 
         return rootView;
     }
@@ -188,7 +136,7 @@ public class HomeFragment extends Fragment {
                 GetDataAdapter2.setImageTitle(json.getString(Image_Name_JSON));
 
                 // Adding image title name in array to display on RecyclerView click event.
-                //TODO a modifer pour quand on clique sur l'image ca ouvre une nouvelle activé
+
                 ImageTitleNameArrayListForClick.add(json.getString(Image_Name_JSON));
                 Log.i("URL_IMAGE", json.getString(Image_URL_JSON));
                 GetDataAdapter2.setImageUrl(json.getString(Image_URL_JSON));
@@ -216,7 +164,7 @@ public class HomeFragment extends Fragment {
             ListOfdataAdapter.add(GetDataAdapter2);
         }
 
-        recyclerViewadapter = new RecyclerViewAdapter(ListOfdataAdapter, getActivity());
+        recyclerViewadapter = new RecyclerViewAdapter(ListOfdataAdapter, getActivity(), getActivity());
 
         recyclerView.setAdapter(recyclerViewadapter);
     }

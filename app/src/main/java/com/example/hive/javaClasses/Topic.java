@@ -2,7 +2,6 @@ package com.example.hive.javaClasses;
 
 import java.util.ArrayList;
 
-//ToDo
 public class Topic {
     private int idTopic;
     public String nomTopic;

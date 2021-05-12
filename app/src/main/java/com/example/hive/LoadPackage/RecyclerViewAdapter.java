@@ -1,16 +1,23 @@
 package com.example.hive.LoadPackage;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.hive.PostPackage.PostActivity;
 import com.example.hive.R;
+import com.example.hive.javaClasses.User;
 
 import java.util.List;
 
@@ -19,12 +26,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context context;
     List<DataAdapter> dataAdapters;
     ImageLoader imageLoader;
+    Activity actvity;
 
-    public RecyclerViewAdapter(List<DataAdapter> getDataAdapter, Context context){
+    public RecyclerViewAdapter(List<DataAdapter> getDataAdapter, Context context, Activity actvity){
 
         super();
         this.dataAdapters = getDataAdapter;
         this.context = context;
+        this.actvity = actvity;
     }
 
     @Override
@@ -41,7 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder Viewholder, int position) {
 
         DataAdapter dataAdapterOBJ =  dataAdapters.get(position);
-
+        User user = (User)actvity.getIntent().getExtras().getSerializable("User");
         imageLoader = ImageAdapter.getInstance(context).getImageLoader();
 
         imageLoader.get(dataAdapterOBJ.getImageUrl(),
@@ -53,6 +62,41 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         );
 
         Viewholder.VollyImageView.setImageUrl(dataAdapterOBJ.getImageUrl(), imageLoader);
+
+        Viewholder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(actvity, PostActivity.class);
+                //intent.putExtra("nomCategorie", categorieClique.toString());
+                intent.putExtra("nomAuteur", dataAdapterOBJ.getImageNomAuteur());
+                intent.putExtra("prenomAuteur", dataAdapterOBJ.getImagePrenomAuteur());
+                intent.putExtra("nomPost", dataAdapterOBJ.getImageTitle());
+                intent.putExtra("nomCategorie", dataAdapterOBJ.getImageCategorie());
+                intent.putExtra("nomTopic", dataAdapterOBJ.getImageTopic());
+                intent.putExtra("urlImage", dataAdapterOBJ.getImageUrl());
+                intent.putExtra("nbLike", dataAdapterOBJ.getImagenbLike());
+
+                intent.putExtra("idUser", user.getIdUser());
+                intent.putExtra("Role", dataAdapterOBJ.getImageRole());
+                actvity.startActivity(intent);
+            }
+        });
+
+        Viewholder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                likePost(user, dataAdapterOBJ.getImageCategorie(), dataAdapterOBJ.getImageTopic(), dataAdapterOBJ.getImageTitle());
+                //TODO faire la fonction boloss
+            }
+        });
+
+        Viewholder.commentaireButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO mettre l'intent + le pop up du commentaire
+            }
+        });
+
 
         Viewholder.ImageTitleTextView.setText(dataAdapterOBJ.getImageTitle());
         String auteur_full = dataAdapterOBJ.getImageNomAuteur()+" "+dataAdapterOBJ.getImagePrenomAuteur();
@@ -93,6 +137,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public NetworkImageView VollyImageView ;
 
+        public RelativeLayout relativeLayout;
+
+        public AppCompatButton likeButton, commentaireButton;
+
+
         public ViewHolder(View itemView) {
 
             super(itemView);
@@ -110,6 +159,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             ImageNbLikeTextView = (TextView) itemView.findViewById(R.id.text_nblike);
 
             ImageRole = (TextView) itemView.findViewById(R.id.role_auteur);
+
+            relativeLayout = itemView.findViewById(R.id.Father);
+
+            likeButton = (AppCompatButton) itemView.findViewById(R.id.likeCheckBox);
+
+            commentaireButton = (AppCompatButton) itemView.findViewById(R.id.checkBox3);
 
         }
     }

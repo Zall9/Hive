@@ -121,9 +121,9 @@ public class AccountFragment extends Fragment {
         int nbPost =  object.getInt("nbPost");
         ArrayList<String[]> listeTopicRoles = new ArrayList<String[]>();
         ArrayList<ArrayList<String>> listeDeRoles = new ArrayList<ArrayList<String>>();
+        GetDataATA = new DataAdapterTopicAbo();
         for(int i = 0; i<listeTopicRoleJSON.length(); i++) {
 
-            GetDataATA = new DataAdapterTopicAbo();
 
             JSONObject json = null;
             try {

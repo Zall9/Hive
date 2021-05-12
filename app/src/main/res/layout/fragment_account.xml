@@ -44,7 +44,8 @@
             android:layout_height="40dp"
             android:layout_below="@id/user_nom"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_baseline_favorite_orange_24"/>
+            android:src="@drawable/ic_baseline_favorite_orange_24"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/user_nbLike"
@@ -61,7 +62,7 @@
             android:id="@+id/user_nbLike_Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="nbLike : "
+            android:text=":"
             android:layout_below="@id/user_nom"
             android:textSize="30sp"
             android:layout_marginTop="20dp"
@@ -74,21 +75,23 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_below="@id/user_nom"
-            android:layout_toEndOf="@id/user_nbLike"
+
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/hive"/>
+            android:src="@drawable/hive"
+            android:layout_toLeftOf="@+id/user_nbPost_Text"/>
 
         <TextView
             android:id="@+id/user_nbPost_Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="nbPost : "
+            android:text=":"
             android:layout_below="@id/user_nom"
             android:textSize="30sp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/user_image_nbpost"
-            android:layout_marginLeft="7dp"/>
+
+            android:layout_marginLeft="7dp"
+            android:layout_toLeftOf="@+id/user_nbPost"/>
 
         <TextView
             android:id="@+id/user_nbPost"
@@ -98,8 +101,9 @@
             android:layout_below="@id/user_nom"
             android:textSize="30sp"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@id/user_nbPost_Text"
-            android:layout_marginLeft="7dp"/>
+            android:layout_marginRight="150dp"
+            android:layout_marginLeft="7dp"
+            android:layout_alignParentEnd="true"/>
 
         <TextView
             android:id="@+id/user_liste_badge"
