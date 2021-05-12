@@ -36,6 +36,7 @@ import com.example.hive.LoadPackage.ImageAdapter;
 import com.example.hive.R;
 import com.example.hive.javaClasses.Commentaire;
 import com.example.hive.javaClasses.User;
+import com.example.hive.utils.PermissionCheck;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -134,6 +135,8 @@ public class PostActivity extends AppCompatActivity {
         downloadIM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(PermissionCheck.readAndWriteExternalStorage(PostActivity.this)){
+
                 Uri uri = Uri.parse(UrlImage);
                 DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                 DownloadManager.Request request = new DownloadManager.Request(uri);
@@ -149,6 +152,8 @@ public class PostActivity extends AppCompatActivity {
                 request.setMimeType("*/*");
                 Toast.makeText(PostActivity.this, "Votre image se télécharge", Toast.LENGTH_SHORT).show();
                 downloadManager.enqueue(request);
+
+                }
             }
         });
 
