@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/cardview_APP_post_nomPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom Post"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/cardview_APP_post_nomAuteur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom Auteur"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_below="@id/cardview_APP_post_nomPost"/>
+
+        <ImageView
+            android:id="@+id/cardview_APP_post_delete"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/cardview_APP_post_buttonArchiver"
+            />
+
+        <Button
+            android:id="@+id/cardview_APP_post_buttonArchiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Archiver"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="22dp"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

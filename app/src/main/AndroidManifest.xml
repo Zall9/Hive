@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hive"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FullScreenImageActivity"></activity>
+        <activity android:name=".AdminPanelPost"></activity>
+        <activity android:name=".FullScreenImageActivity" />
         <activity
             android:name=".AdminPanelGroupe"
             android:screenOrientation="portrait" />

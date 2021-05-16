@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AdminPanelPost">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--Info du Topic-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/admin_panel_post_titre_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Information du Topic"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="3dp"/>
+
+            <TextView
+                android:id="@+id/admin_panel_post_nbPost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre Total de Post : "
+                android:layout_below="@id/admin_panel_post_titre_info"
+                android:layout_marginLeft="17dp"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/admin_panel_post_nbPost_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_below="@id/admin_panel_post_titre_info"
+                android:layout_toEndOf="@id/admin_panel_post_nbPost"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/admin_panel_post_nbLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre Total de Like : "
+                android:layout_below="@id/admin_panel_post_nbPost"
+                android:layout_marginLeft="17dp"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/admin_panel_post_nbLike_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_below="@id/admin_panel_post_nbPost"
+                android:layout_toEndOf="@id/admin_panel_post_nbLike"
+                android:layout_marginBottom="6dp"/>
+
+            <TextView
+                android:id="@+id/admin_panel_post_nbArchive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de Posts Archivé(s) : "
+                android:layout_below="@id/admin_panel_post_nbLike"
+                android:layout_marginLeft="17dp"
+                android:layout_marginBottom="7dp"/>
+
+            <TextView
+                android:id="@+id/admin_panel_post_nbArchive_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_below="@id/admin_panel_post_nbLike"
+                android:layout_toEndOf="@id/admin_panel_post_nbArchive"
+                android:layout_marginBottom="6dp"/>
+
+        </RelativeLayout>
+
+        <!--L'affiche des Posts-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/admin_panel_post_titre_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posts du Topic"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="3dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/admin_panel_post_recyclerview_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/admin_panel_post_titre_post"
+                tools:listitem="@layout/cardview_admin_panel_post_post"
+                />
+
+        </RelativeLayout>
+
+        <!--L'affiche des Posts Archivé-->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/admin_panel_post_titre_archive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posts Archivé"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="3dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/admin_panel_post_recyclerview_archive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/admin_panel_post_titre_archive"
+                tools:listitem="@layout/cardview_admin_panel_post_post" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

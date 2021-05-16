@@ -11,6 +11,8 @@ public class DataAdapter
     private String ImagenbLike;
     private String ImageRole;
     private boolean aLike;
+    private int idPost;
+
 
     public String getImageUrl() {
         return ImageURL;
@@ -47,4 +49,8 @@ public class DataAdapter
     public boolean getaLike() { return aLike; }
 
     public void setaLike(boolean aLike) { this.aLike = aLike; }
+
+    public int getIdPost() { return idPost; }
+
+    public void setIdPost(int idPost) { this.idPost = idPost; }
 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.hive.AdminPanelGroupe;
+import com.example.hive.AdminPanelPost;
 import com.example.hive.R;
 import com.example.hive.javaClasses.User;
 
@@ -46,14 +47,14 @@ public class AdminPanel extends AppCompatActivity {
             }
         });
 
-        /*bposts.setOnClickListener(new View.OnClickListener() {
+        bposts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, AdminPanelPosts.class);
+                Intent intent = new Intent(AdminPanel.this, AdminPanelPost.class);
                 intent.putExtra("nomTopic", nomTopic);
-                intent.putExtra("idUser", idUser);
+                intent.putExtra("idCategorie", idCategorie);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }
