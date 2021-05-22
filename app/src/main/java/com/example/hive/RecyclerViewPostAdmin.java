@@ -82,6 +82,7 @@ public class RecyclerViewPostAdmin extends RecyclerView.Adapter<RecyclerViewPost
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setMessage("Voulez vous vraiment supprimer ce Post ?");
+                    builder.setIcon(R.drawable.ic_delete);
                     builder.setTitle("Confirmation de Suppression")
                             .setCancelable(true)
                             .setPositiveButton("Oui", new DialogInterface.OnClickListener() {

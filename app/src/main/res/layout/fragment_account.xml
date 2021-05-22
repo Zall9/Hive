@@ -105,38 +105,15 @@
             android:layout_marginLeft="7dp"
             android:layout_alignParentEnd="true"/>
 
-        <TextView
-            android:id="@+id/user_liste_badge"
+
+        <Button
+            android:id="@+id/user_button_lbadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Liste Badges "
-            android:layout_marginTop="7dp"
+            android:text="Voir mes Badges"
             android:layout_below="@id/user_image_nbpost"
-            android:textSize="20sp"/>
+            android:layout_centerHorizontal="true"/>
 
-        <RelativeLayout
-            android:id="@+id/user_linear_layout_liste_badge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/orange"
-            android:layout_below="@+id/user_liste_badge">
-
-            <TextView
-                android:id="@+id/liste"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Liste a faire"
-                android:textSize="25sp"/>
-            <ImageView
-                android:id="@+id/image_badge"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_toEndOf="@id/liste"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_loupe"
-                />
-
-        </RelativeLayout>
 
 
     </RelativeLayout>

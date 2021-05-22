@@ -100,6 +100,7 @@ public class RecyclerViewListeUt extends RecyclerView.Adapter<RecyclerViewListeU
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setMessage("Voulez vous vraiment ban : "+listeUt.get(position));
+                    builder.setIcon(R.drawable.ic_ban);
                     builder.setTitle("Confirmation de ban")
                             .setCancelable(true)
                             .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
@@ -137,6 +138,7 @@ public class RecyclerViewListeUt extends RecyclerView.Adapter<RecyclerViewListeU
                 @Override
                 public void onClick(View v) {
                     builder.setMessage("Voulez vous vraiment ban : "+listeUt.get(position));
+                    builder.setIcon(R.drawable.ic_ban);
                     builder.setTitle("Confirmation de ban")
                     .setCancelable(true)
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
@@ -167,6 +169,7 @@ public class RecyclerViewListeUt extends RecyclerView.Adapter<RecyclerViewListeU
                 @Override
                 public void onClick(View v) {
                     builder.setMessage("Voulez vous vraiment déban : "+listeUt.get(position));
+                    builder.setIcon(R.drawable.ic_admin_panel_groupe);
                     builder.setTitle("Confirmation de Déban")
                             .setCancelable(true)
                             .setPositiveButton("Oui", new DialogInterface.OnClickListener() {

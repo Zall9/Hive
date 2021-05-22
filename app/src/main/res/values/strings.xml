@@ -28,6 +28,15 @@
     <string name="popup_post_description">Description</string>
 
 
+    <string name="badge_post_bronze">Vous devez poster au moins 1 Post</string>
+    <string name="badge_post_argent">Vous devez poster au moins 3 Posts</string>
+    <string name="badge_post_or">Vous devez poster au moins 5 Posts</string>
+
+
+
+
+
+
     <!--Post customise-->
     <string name="home_page_post_name">Nom du Post</string>
     <string name="home_page_post_descripiton">Description du post</string>

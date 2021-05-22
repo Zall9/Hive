@@ -181,6 +181,10 @@ public class AddFragment extends Fragment {
                 progressDialog.dismiss();
 
                 String messageSucces = "Votre post à bien été envoyer au serveur";
+                User user = (User)getActivity().getIntent().getExtras().getSerializable("User");
+                user.setNbPost(user.getNbPost()+1);
+                getActivity().getIntent().putExtra("User", user);
+
                 if(!(string1.equals("Vous êtes banni de ce Topic !"))){
                     // Printing uploading success message coming from server on android app.
                     Toast.makeText(getActivity(),messageSucces,Toast.LENGTH_LONG).show();

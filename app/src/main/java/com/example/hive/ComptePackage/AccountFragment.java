@@ -1,14 +1,19 @@
 package com.example.hive.ComptePackage;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +26,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hive.LoadPackage.HomeFragment;
 import com.example.hive.R;
+import com.example.hive.RecyclerViewAdapterBadge;
+import com.example.hive.javaClasses.Badges;
 import com.example.hive.javaClasses.Role;
 import com.example.hive.javaClasses.Topic;
 import com.example.hive.javaClasses.User;
@@ -36,8 +43,9 @@ import java.util.Map;
 public class AccountFragment extends Fragment {
 
     private TextView nomTV, prenomTV, nbLikeTV, nbPostTV;
+    private Button bbage;
     private String nom, prenom, nbLike, nbPost;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, recyclerViewBadge;
     private RecyclerView.LayoutManager layoutManagerOfrecyclerView;
     private StringRequest RequestOfJSonArray ;
     private String HTTP_JSON_URL = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/recup_topic_abonne.php";
@@ -59,6 +67,38 @@ public class AccountFragment extends Fragment {
         nbLikeTV = (TextView) rootView.findViewById(R.id.user_nbLike);
 
         nbPostTV = (TextView) rootView.findViewById(R.id.user_nbPost);
+
+        bbage = (Button) rootView.findViewById(R.id.user_button_lbadge);
+
+        bbage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setIcon(R.drawable.hive);
+                builder.setTitle("Vos badges ")
+                        .setCancelable(true);
+                View view = getLayoutInflater().inflate(R.layout.custom_alert_badge, null);
+                recyclerViewBadge = (RecyclerView) view.findViewById(R.id.alertContainer);
+                recyclerViewBadge.setHasFixedSize(true);
+
+                recyclerViewBadge.setLayoutManager(new GridLayoutManager(getContext(), 3));
+                recyclerViewBadge.setAdapter(new RecyclerViewAdapterBadge(Badges.creerListeBadges(user), getContext()));
+                builder.setView(view);
+
+                builder.setNegativeButton("Fermer", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+
+                builder.show();
+            }
+        });
+
+
+
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview_topic_abonne);
         recyclerView.setHasFixedSize(true);

@@ -96,6 +96,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 likePost(user, dataAdapterOBJ.getImageCategorie(), dataAdapterOBJ.getImageTopic(), dataAdapterOBJ.getImageTitle(), Viewholder.likeButton, Viewholder.ImageNbLikeTextView, dataAdapterOBJ);
+
             }
         });
 
@@ -160,6 +161,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public void likePost(User user, String nomCategorie, String nomTopic, String nomPost, AppCompatButton likePost, TextView nbLike, DataAdapter dataAdapterOBJ){
         String url = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/like_post.php";
+        User userEx = (User)actvity.getIntent().getExtras().getSerializable("User");
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -169,12 +171,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             likePost.setBackgroundResource(R.drawable.ic_baseline_favorite_grey_24);
                             valNbLike -= 1;
                             dataAdapterOBJ.setaLike(false);
+                            userEx.setNbLikeFait(userEx.getNbLikeFait()-1);
                         }else{
                             likePost.setBackgroundResource(R.drawable.ic_baseline_favorite_orange_24);
                             valNbLike += 1;
                             dataAdapterOBJ.setaLike(true);
+                            userEx.setNbLikeFait(userEx.getNbLikeFait()+1);
+
                         }
 
+                        actvity.getIntent().putExtra("User", userEx);
                         nbLike.setText(String.valueOf(valNbLike));
                         dataAdapterOBJ.setImagenbLike(String.valueOf(valNbLike));
                     }

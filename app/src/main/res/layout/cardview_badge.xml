@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+        <ImageView
+            android:id="@+id/cardview_badge_img"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/badge_post_or"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"/>
+
+
+</androidx.cardview.widget.CardView>

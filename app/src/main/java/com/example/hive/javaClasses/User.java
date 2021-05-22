@@ -15,45 +15,26 @@ public class User implements Serializable {
     public String nom, prenom, email;
     private String password;
     public Image profilePic;
-    public ArrayList<Topic> userTopicList;
-    public ArrayList<Role> userRoleList;
-    public ArrayList<Badges> badgesList;
-    public ArrayList<Commentaire> commentList;
-    public Date dateInscription;
 
+    public Date dateInscription;
+    public int nbPost, nbLikeRecu,nbLikeFait, nbCommentaire;
 
 
     //constructeur à utiliser pour creer un nouvel utilisateur
-    public User(int idUser,String nom,String prenom,String email){
+    public User(int idUser,String nom,String prenom,String email, int nbPost, int nbLikeRecu,int nbLikeFait, int nbCommentaire){
         this.idUser=idUser;
         this.nom=nom;
         this.prenom=prenom;
         this.email=email;
-        this.userTopicList=userTopicList;
-        this.userRoleList=userRoleList;
-        this.badgesList=badgesList;
-        this.commentList=commentList;
         this.dateInscription= Calendar.getInstance().getTime();
-
+        this.nbPost = nbPost;
+        this.nbLikeRecu = nbLikeRecu;
+        this.nbLikeFait = nbLikeFait;
+        this.nbCommentaire = nbCommentaire;
     }
     //METHODS
 
 
-    public ArrayList<Role> getUserRoleList() {
-        return userRoleList;
-    }
-
-    public void setUserRoleList(ArrayList<Role> userRoleList) {
-        this.userRoleList = userRoleList;
-    }
-
-    public ArrayList<Badges> getBadgesList() {
-        return badgesList;
-    }
-
-    public void setBadgesList(ArrayList<Badges> badgesList) {
-        this.badgesList = badgesList;
-    }
 
     public int getIdUser() {
         return idUser;
@@ -103,11 +84,19 @@ public class User implements Serializable {
         this.profilePic = profilePic;
     }
 
-    public ArrayList<Topic> getUserTopicList() {
-        return userTopicList;
-    }
+    public int getNbPost() { return nbPost; }
 
-    public void setUserTopicList(ArrayList<Topic> userTopicList) {
-        this.userTopicList = userTopicList;
-    }
+    public int getNbCommentaire() { return nbCommentaire; }
+
+    public void setNbPost(int nbPost) { this.nbPost = nbPost; }
+
+    public void setNbCommentaire(int nbCommentaire) { this.nbCommentaire = nbCommentaire; }
+
+    public int getNbLikeRecu() { return nbLikeRecu; }
+
+    public int getNbLikeFait() { return nbLikeFait; }
+
+    public void setNbLikeRecu(int nbLikeRecu) { this.nbLikeRecu = nbLikeRecu; }
+
+    public void setNbLikeFait(int nbLikeFait) { this.nbLikeFait = nbLikeFait; }
 }

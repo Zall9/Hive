@@ -308,6 +308,7 @@ public class PostActivity extends AppCompatActivity {
     public void commenter(){
         AlertDialog.Builder builder = new AlertDialog.Builder(PostActivity.this);
         builder.setTitle("Commentaire");
+        builder.setIcon(R.drawable.ic_baseline_comment_24);
 
         // Set up the input
         final EditText input = new EditText(PostActivity.this);

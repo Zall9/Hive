@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             setContentView(R.layout.login);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             estEmail = findViewById(R.id.text_pseudo);
             estPassword = findViewById(R.id.text_password);
             eLogin = findViewById(R.id.button_login);
@@ -82,7 +85,9 @@ public class MainActivity extends AppCompatActivity{
                                 Toast.makeText(MainActivity.this, "Email/Password invalide !", Toast.LENGTH_SHORT).show();
                             }else{
                                 String[] tabreponse = response.split(",");
-                                User user = new User(Integer.parseInt(tabreponse[0]), tabreponse[1], tabreponse[2], tabreponse[3]);
+                                User user = new User(Integer.parseInt(tabreponse[0]), tabreponse[1], tabreponse[2], tabreponse[3], Integer.parseInt(tabreponse[5]), Integer.parseInt(tabreponse[6]),
+                                        Integer.parseInt(tabreponse[7]), Integer.parseInt(tabreponse[8]));
+
                                 Toast.makeText(MainActivity.this, "Login successful !", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MainActivity.this, MainMenu.class);
                                 intent.putExtra("User", user);
