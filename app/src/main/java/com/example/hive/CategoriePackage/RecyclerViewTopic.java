@@ -66,6 +66,7 @@ public class RecyclerViewTopic extends RecyclerView.Adapter<RecyclerViewTopic.Vi
         }else{
             holder.buttonAbonne.setText("S'abonner");
         }
+        holder.textNbAbo.setText(String.valueOf(topicObject.getNbAbo()));
 
         holder.buttonAbonne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +134,7 @@ public class RecyclerViewTopic extends RecyclerView.Adapter<RecyclerViewTopic.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView textNomTopic;
+        public TextView textNomTopic, textNbAbo;
 
         public Button buttonAbonne;
 
@@ -144,6 +145,8 @@ public class RecyclerViewTopic extends RecyclerView.Adapter<RecyclerViewTopic.Vi
             textNomTopic = (TextView) itemView.findViewById(R.id.text_topic_cardview);
 
             buttonAbonne = (Button) itemView.findViewById(R.id.button_topic_cardview);
+
+            textNbAbo = (TextView) itemView.findViewById(R.id.text_topic_nbAbo);
 
         }
     }

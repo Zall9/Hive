@@ -1,11 +1,10 @@
-package com.example.hive;
+package com.example.hive.AdminPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,16 +12,12 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hive.ComptePackage.AdminPanel;
-import com.example.hive.ComptePackage.DataAdapterTopicAbo;
-import com.example.hive.ComptePackage.RecyclerViewCompte;
 import com.example.hive.LoadPackage.HomeFragment;
-import com.example.hive.javaClasses.Role;
-import com.example.hive.javaClasses.Topic;
-import com.example.hive.javaClasses.User;
+import com.example.hive.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,7 +36,7 @@ public class AdminPanelGroupe extends AppCompatActivity {
     private StringRequest RequestOfJSonArray ;
     private RequestQueue requestQueue ;
     private String HTTP_JSON_URL = "http://os-vps418.infomaniak.ch:1180/l2_gr_8/recup_utilisateur_topic.php";
-    private TextView createurTV;
+    private TextView createurTV, adminTV, membreTV, banniTV;
     private RecyclerView adminsRV, membresRV, banniRV;
     private RecyclerViewListeUt recyclerViewListeA, recyclerViewListeM, recyclerViewListeB;
     private RecyclerView.LayoutManager layoutManagerOfrecyclerView, layoutManagerOfrecyclerView2, layoutManagerOfrecyclerView3;
@@ -53,6 +48,9 @@ public class AdminPanelGroupe extends AppCompatActivity {
         setContentView(R.layout.activity_admin_panel_groupe);
 
         createurTV = (TextView) findViewById(R.id.admin_panel_groupe_nom_createur);
+        adminTV = (TextView) findViewById(R.id.admin_panel_groupe_admin);
+        membreTV = (TextView) findViewById(R.id.admin_panel_groupe_membre);
+        banniTV = (TextView) findViewById(R.id.admin_panel_groupe_banni);
 
         nomTopic = getIntent().getExtras().getString("nomTopic");
         idUser = getIntent().getExtras().getInt("idUser");
@@ -143,6 +141,9 @@ public class AdminPanelGroupe extends AppCompatActivity {
 
 
         String createur = createurJSON.getString(0);
+        adminTV.setText("Admins : "+String.valueOf(adminsIdJSON.length()));
+        membreTV.setText("Membres : "+String.valueOf(membresJSON.length()));
+        banniTV.setText("Membre Banni : "+String.valueOf(banniJSON.length()));
         for(int i = 0; i<adminsJSON.length(); i++) {
             try {
                 listeAdmins.add(adminsJSON.getString(i));

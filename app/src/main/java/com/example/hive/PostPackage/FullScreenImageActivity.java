@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.PostPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.bumptech.glide.Glide;
 import com.example.hive.LoadPackage.ImageAdapter;
 import com.example.hive.PostPackage.PostActivity;
+import com.example.hive.R;
 
 public class FullScreenImageActivity extends AppCompatActivity {
 

@@ -124,6 +124,7 @@ public class DescriptionCategorie extends AppCompatActivity {
                 GetTopics.setNomTopic(json.getString(Nom_Topic_JSON));
                 Log.d("OUI", String.valueOf(json.getBoolean(est_Abonne_JSON)));
                 GetTopics.setEstAbonne(json.getBoolean(est_Abonne_JSON));
+                GetTopics.setNbAbo(json.getInt("nbAbo"));
                 // Adding image title name in array to display on RecyclerView click event.
 
             } catch (JSONException e) {

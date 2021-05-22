@@ -1,4 +1,4 @@
-package com.example.hive;
+package com.example.hive.AdminPackage;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -20,14 +20,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.hive.LoadPackage.DataAdapter;
-import com.example.hive.LoadPackage.RecyclerViewAdapter;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.hive.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

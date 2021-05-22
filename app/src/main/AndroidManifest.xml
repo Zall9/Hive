@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hive"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AdminPanelPost"></activity>
-        <activity android:name=".FullScreenImageActivity" />
+        <activity android:name=".AdminPackage.AdminPanelPost"></activity>
+        <activity android:name=".PostPackage.FullScreenImageActivity" />
         <activity
-            android:name=".AdminPanelGroupe"
+            android:name=".AdminPackage.AdminPanelGroupe"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ComptePackage.AdminPanel"

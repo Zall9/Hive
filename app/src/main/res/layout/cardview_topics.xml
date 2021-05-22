@@ -9,7 +9,6 @@
     card_view:cardElevation="5dp"
     card_view:cardMaxElevation="5dp"
     card_view:contentPadding="5dp">
-    <!--TODO Rajoute un chiffre pour indiquer le nombre d'abonnée sur chaque Topic-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +24,16 @@
             android:layout_marginLeft="5sp"
             android:layout_alignParentLeft="true"
             android:text="Nom Topic"/>
+
+        <TextView
+            android:id="@+id/text_topic_nbAbo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20"
+            android:layout_toLeftOf="@id/button_topic_cardview"
+            android:layout_centerInParent="true"
+            android:textSize="20dp"
+            android:layout_marginRight="5dp"/>
 
         <Button
             android:id="@+id/button_topic_cardview"

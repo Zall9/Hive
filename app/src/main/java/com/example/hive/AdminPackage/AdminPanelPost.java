@@ -1,11 +1,10 @@
-package com.example.hive;
+package com.example.hive.AdminPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.hive.LoadPackage.DataAdapter;
-import com.example.hive.LoadPackage.RecyclerViewAdapter;
+import com.example.hive.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

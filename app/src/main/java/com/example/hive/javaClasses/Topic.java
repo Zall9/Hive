@@ -8,6 +8,7 @@ public class Topic {
     public boolean estAbonne;
     public ArrayList<Post> postList;
     public ArrayList<Role> topicRoleList;
+    public int nbAbo;
 
     public Topic(){
         this.idTopic = -1;
@@ -15,6 +16,7 @@ public class Topic {
         this.estAbonne = false;
         this.postList = new ArrayList<Post>();
         this.topicRoleList = new ArrayList<Role>();
+        this.nbAbo = 0;
     }
     //Constructeur à utiliser lors de la création d'un nouveau TOPIC (liste de posts vide)
     public Topic(int idTopic, String nomTopic){
@@ -75,4 +77,8 @@ public class Topic {
     public void setPostList(ArrayList<Post> topicList) {
         this.postList = topicList;
     }
+
+    public int getNbAbo() { return nbAbo; }
+
+    public void setNbAbo(int nbAbo) { this.nbAbo = nbAbo; }
 }

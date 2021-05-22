@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".AdminPanelGroupe">
-    <!--TODO mettre le nombre de personne de chaque role-->
+    tools:context=".AdminPackage.AdminPanelGroupe">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,15 +39,16 @@
             android:textStyle="bold"
             android:layout_margin="3dp"/>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/admin_panel_recyclerview_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="15dp"
             tools:listitem="@layout/cardview_admin_panel_utilisateur" />
 
         <TextView

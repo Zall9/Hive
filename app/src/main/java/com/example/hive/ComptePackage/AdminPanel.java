@@ -3,16 +3,13 @@ package com.example.hive.ComptePackage;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Binder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.hive.AdminPanelGroupe;
-import com.example.hive.AdminPanelPost;
+import com.example.hive.AdminPackage.AdminPanelGroupe;
+import com.example.hive.AdminPackage.AdminPanelPost;
 import com.example.hive.R;
-import com.example.hive.javaClasses.User;
 
 import java.util.ArrayList;
 
