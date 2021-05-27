@@ -32,6 +32,25 @@
     <string name="badge_post_argent">Vous devez poster au moins 3 Posts</string>
     <string name="badge_post_or">Vous devez poster au moins 5 Posts</string>
 
+    <string name="badge_like_fait_bronze">Vous devez liker 3 Posts</string>
+    <string name="badge_like_fait_argent">Vous devez liker 10 Posts</string>
+    <string name="badge_like_fait_or">Vous devez liker 25 Posts</string>
+
+    <string name="badge_like_recu_bronze">Vous devez recevoir 5 likes</string>
+    <string name="badge_like_recu_argent">Vous devez recevoir 15 likes</string>
+    <string name="badge_like_recu_or">Vous devez recevoir 25 likes</string>
+
+    <string name="badge_commentaire_bronze">Vous devez écrire 10 commentaire</string>
+    <string name="badge_commentaire_argent">Vous devez écrire 25 commentaire</string>
+    <string name="badge_commentaire_or">Vous devez écrire 35 commentaire</string>
+
+
+    <string name="badge_ultime">Vous devez débloquer tous les autre badges</string>
+
+    <string name="badge_marty">Vous devez être le boss !</string>
+    <string name="badge_wayntal">Vous devez être totalement loufoque</string>
+    <string name="badge_boussion">Vous devez être aussi un crack </string>
+
 
 
 

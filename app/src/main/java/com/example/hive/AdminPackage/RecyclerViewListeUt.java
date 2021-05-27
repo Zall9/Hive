@@ -78,7 +78,7 @@ public class RecyclerViewListeUt extends RecyclerView.Adapter<RecyclerViewListeU
                         refresh();
                     }
                 });
-            }else{
+            }else if(listeAafficher.equals("Membre")){
                 holder.upgradeIM.setImageResource(R.drawable.ic_upgrade);
                 holder.upgradeIM.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -9,7 +9,7 @@
             android:id="@+id/cardview_badge_img"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:src="@drawable/badge_post_or"
+            android:src="@drawable/badge_commentaire_or"
             android:layout_gravity="center"
             android:layout_margin="10dp"/>
 
